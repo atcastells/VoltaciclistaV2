@@ -5,20 +5,24 @@ import Dades.Acces;
  */
 public class Principal {
 	public static void main (String[] args){
-		Biblioteca gui = new Biblioteca();
-		Acces acces = new Acces();
 		new Principal().inici();
 	}
 
 	void inici(){
+		Biblioteca gui = new Biblioteca();
+		Acces acces = new Acces();
 		/*Cridem al menú*/
 		int controlMenu = 0;
 		int controlMenuCiclistes = 0;
 		int controlMenuCompeticio = 0;
 		while (controlMenu < menu.length){
+			gui.imprimir(gui.funcioMenu(menu));
+			controlMenu = gui.readInt("Introdueix una opció del menú: ");
 			switch (controlMenu){
 				case 1:
 					while (controlMenuCiclistes < menuGestioCiclistes.length){
+						gui.imprimir(gui.funcioMenu(menuGestioCiclistes));
+						controlMenuCiclistes = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCiclistes){
 							case 1:
 								break;
@@ -29,6 +33,8 @@ public class Principal {
 					break;
 				case 2:
 					while (controlMenuCompeticio < menuCompeticio.length){
+						gui.imprimir(gui.funcioMenu(menuCompeticio));
+						controlMenuCompeticio = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCompeticio){
 							case 1:
 								break;
