@@ -36,11 +36,11 @@ public class Principal {
 								String nom = "";
 
 								/*Comprovació equips*/
-									do{
+									/*do{
 										gui.imprimir("Introdueix el codi equip del Ciclista: ");
 										equip = gui.readString();
 									}
-									while(acces.equipExistent(equip));
+									while(acces.equipExistent(equip));*/
 
 								break;
 							case 2:
