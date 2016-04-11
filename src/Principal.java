@@ -1,4 +1,5 @@
-import Dades.Acces;
+import dades.Acces;
+import dades.Informacio;
 
 /**
  * Created by acastells on 04/04/16.
@@ -11,6 +12,7 @@ public class Principal {
 	void inici(){
 		Biblioteca gui = new Biblioteca();
 		Acces acces = new Acces();
+		Informacio informacio = new Informacio();
 		/*Cridem al menú*/
 		int controlMenu = 0;
 		int controlMenuCiclistes = 0;
@@ -25,6 +27,21 @@ public class Principal {
 						controlMenuCiclistes = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCiclistes){
 							case 1:
+								/*INICI INSCRIPCIO CICLISTES*/
+
+								/*Variables del ciclista*/
+								String equip = "";
+								String dni = "";
+								String dataNaixement = "";
+								String nom = "";
+
+								/*Comprovació equips*/
+									do{
+										gui.imprimir("Introdueix el codi equip del Ciclista: ");
+										equip = gui.readString();
+									}
+									while(acces.equipExistent(equip));
+
 								break;
 							case 2:
 								break;
