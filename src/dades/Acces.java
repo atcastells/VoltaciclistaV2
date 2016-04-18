@@ -61,4 +61,21 @@ public class Acces {
 		return dades.equips.length;
 	}
 
+	public int validarCodi(Informacio dades, String text){
+		for(int i = 0; i < getEquipsLenght(dades);i++){
+			if(getEquips(dades,i,0).equalsIgnoreCase(text)){
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public int equipPle(Informacio dades,int x){
+		if(getMembresEquip(dades,x) < dades.MAX_X_EQUIP){
+			return getMembresEquip(dades,x);
+		}
+		return -1;
+	}
+
+
 }

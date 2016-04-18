@@ -33,4 +33,32 @@ public class Biblioteca {
 		String newString = sc.nextLine();
 		return newString;
 	}
+
+	String funcioData(){
+		String data = "";
+		int dies;
+		int mesos;
+		int anys;
+		/*Anys*/
+		do{
+			anys = readInt("Any: ");
+			imprimir("\n");
+		}
+		while (2016 - anys < 99);
+		/*Mesos*/
+		do{
+			mesos = readInt("Mesos: ");
+			imprimir("\n");
+		}
+		while (mesos > 0 && mesos <= 12);
+		/*Dies*/
+		do{
+			dies = readInt("Dia: ");
+			imprimir("\n");
+		}
+		while (dies <= 31);
+
+		data +=dies+"/"+mesos+"/"+anys;
+		return data;
+	}
 }
