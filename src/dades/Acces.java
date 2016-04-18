@@ -45,11 +45,11 @@ public class Acces {
 		dades.Ciclistes[x][y] = Ciclistes;
 	}
 
-	public String getTempsEtapes(Informacio dades, int x, int y, int z){
-		return dades.tempsEtapes[x][y][z];
+	public String getTempsEtapes(Informacio dades, int x, int y){
+		return dades.tempsEtapes[x][y];
 	}
-	public void setTempsEtapes(Informacio dades, String TempsEtapes,int x, int y, int z){
-		dades.tempsEtapes[x][y][z] = TempsEtapes;
+	public void setTempsEtapes(Informacio dades, String TempsEtapes,int x, int y){
+		dades.tempsEtapes[x][y] = TempsEtapes;
 	}
 	public int getMembresEquip(Informacio dades, int x){
 		return dades.membres_equip[x];
@@ -87,6 +87,9 @@ public class Acces {
 		return -1;
 	}
 
+	public void inscripcioCiclista(Informacio dades,String[] arrayDades){
+
+	}
+
 
 }
-

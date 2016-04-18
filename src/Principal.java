@@ -27,7 +27,7 @@ public class Principal {
 						controlMenuCiclistes = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCiclistes){
 							case 1:
-								inscripcioCiclista(gui,acces,informacio);
+								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
 								break;
 							case 2:
 								break;
