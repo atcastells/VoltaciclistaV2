@@ -30,7 +30,8 @@ public class Principal {
 								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
 								break;
 							case 2:
-
+								acces.numCiclistes(dades, int x);
+								acces.ciclistes_toString(informacio(gui,acces,informacio));
 								break;
 						}
 					}

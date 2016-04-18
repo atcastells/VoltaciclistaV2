@@ -94,15 +94,14 @@ public class Acces {
 
 	}
 	public int numCiclistes(Informacio dades, int x){
+		int contador = 0;
 		for(int i = 0; i < getMembresLength(dades); i++){
-			if(getMembresEquip(dades,x) == 0){
-
+			contador = getMembresEquip(dades, x) + contador;
 			}
-			else{
-
-			}
+		if(contador == 0){
+			return 1;
 		}
-		return -1;
+		return contador;
 	}
 
 }
