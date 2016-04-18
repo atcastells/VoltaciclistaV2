@@ -64,7 +64,7 @@ public class Acces {
 		return dades.Ciclistes.length;
 	}
 
-	public int validarCodi(Informacio dades, String text){
+	public int numEquip(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLenght(dades);i++){
 			if(getEquips(dades,i,0).equalsIgnoreCase(text)){
 				return i;
@@ -72,7 +72,7 @@ public class Acces {
 		}
 		return -1;
 	}
-	public int equipPle(Informacio dades,int x){
+	public int numEquip(Informacio dades,int x){
 		if(getMembresEquip(dades,x) < dades.MAX_X_EQUIP){
 			return getMembresEquip(dades,x);
 		}
@@ -80,18 +80,40 @@ public class Acces {
 	}
 	public int dniExistent (Informacio dades, String text){
 		for(int i = 0; i < getCiclistesLenght(dades); i++){
-			if(getCiclistes(dades,i,0).equalsIgnoreCase(text)){
-				return i;
+			if(getCiclistes(dades,i,0) != null){
+				if(getCiclistes(dades,i,0).equalsIgnoreCase(text)){
+					return i;
+				}
 			}
 		}
 		return -1;
 	}
 
 	public void inscripcioCiclista(Informacio dades,String[] arrayDades){
-
+		int numEquip = Integer.parseInt(arrayDades[4]);
+		int numCiclista = Integer.parseInt(arrayDades[6]);
+		int posicio = (numEquip * dades.MAX_X_EQUIP) + (numCiclista - 1);	//Determinem la posició del Ciclista a la Array
+		/*Afegim dni*/
+		setCiclistes(dades,arrayDades[0],posicio,0);
+		/*Afegim nom*/
+		setCiclistes(dades,arrayDades[1],posicio,1);
+		/*Afegim Data Naixement*/
+		setCiclistes(dades,arrayDades[2],posicio,2);
+		/*Afegim Dorsal*/
+		setCiclistes(dades,arrayDades[3],posicio,3);
+		/*Afegim Equip*/
+		setCiclistes(dades,arrayDades[5],posicio,4);
+		/*Sumem +1 als membres del equip*/
+		setMembresEquip(dades,numEquip,(getMembresEquip(dades,numEquip)+1));
 	}
 
-
+	public int numCiclistes(Informacio dades){
+		int membres = 0;
+		for (int i = 0;i < getEquipsLenght(dades);i++){
+			membres += getMembresEquip(dades,i);
+		}
+		return membres;
+	}
 
 
 }

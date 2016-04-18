@@ -44,19 +44,19 @@ public class Biblioteca {
 			anys = readInt("Any: ");
 			imprimir("\n");
 		}
-		while (2016 - anys < 99);
+		while (2016 - anys > 99 && 2016 - anys < 16);
 		/*Mesos*/
 		do{
 			mesos = readInt("Mesos: ");
 			imprimir("\n");
 		}
-		while (mesos > 0 && mesos <= 12);
+		while (mesos < 0 && mesos > 12);
 		/*Dies*/
 		do{
 			dies = readInt("Dia: ");
 			imprimir("\n");
 		}
-		while (dies <= 31);
+		while (dies > 31);
 
 		data +=dies+"/"+mesos+"/"+anys;
 		return data;
@@ -67,7 +67,7 @@ public class Biblioteca {
 		for(int i=0;i<3;i++){
 			nom_return += nom.charAt(i);
 		}
-		nom_return += num_inscripcio;
+		nom_return += (num_inscripcio+1);
 		nom_return += equip;
 		return nom_return.toUpperCase();
 	}
