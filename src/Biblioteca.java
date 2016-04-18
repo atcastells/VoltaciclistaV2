@@ -61,7 +61,4 @@ public class Biblioteca {
 		data +=dies+"/"+mesos+"/"+anys;
 		return data;
 	}
-
-
-	/**/
 }
