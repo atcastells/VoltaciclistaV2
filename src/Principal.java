@@ -86,7 +86,7 @@ public class Principal {
 					gui.imprimir("Introdueix el DNI del Ciclista: ");
 					dni = gui.readString();
 				}
-				while (acces.dniExistent(info,dni) = -1);
+				while (acces.dniExistent(info,dni) != -1);
 				/*Nom*/
 				gui.imprimir("Introdueix el nom del Ciclista: ");
 				nom = gui.readString();

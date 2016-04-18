@@ -78,7 +78,7 @@ public class Acces {
 		}
 		return -1;
 	}
-	public int dniExistent (Informacio dades,String [][] Ciclista, String text){
+	public int dniExistent (Informacio dades, String text){
 		for(int i = 0; i < getCiclistesLenght(dades); i++){
 			if(getCiclistes(dades,i,0).equalsIgnoreCase(text)){
 				return i;
