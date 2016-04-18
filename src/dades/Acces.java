@@ -60,6 +60,9 @@ public class Acces {
 	public int getEquipsLenght(Informacio dades){
 		return dades.equips.length;
 	}
+	public int getCiclistesLenght(Informacio dades){
+		return dades.Ciclistes.length;
+	}
 
 	public int validarCodi(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLenght(dades);i++){
@@ -69,13 +72,21 @@ public class Acces {
 		}
 		return -1;
 	}
-
 	public int equipPle(Informacio dades,int x){
 		if(getMembresEquip(dades,x) < dades.MAX_X_EQUIP){
 			return getMembresEquip(dades,x);
 		}
 		return -1;
 	}
+	public int dniExistent (Informacio dades,String [][] Ciclista, String text){
+		for(int i = 0; i < getCiclistesLenght(dades); i++){
+			if(getCiclistes(dades,i,0).equalsIgnoreCase(text)){
+				return i;
+			}
+		}
+		return -1;
+	}
 
 
 }
+
