@@ -61,4 +61,14 @@ public class Biblioteca {
 		data +=dies+"/"+mesos+"/"+anys;
 		return data;
 	}
+	public String funcioDorsal(String nom, int num_inscripcio, String equip){
+		String nom_return = "";
+
+		for(int i=0;i<3;i++){
+			nom_return += nom.charAt(i);
+		}
+		nom_return += num_inscripcio;
+		nom_return += equip;
+		return nom_return.toUpperCase();
+	}
 }

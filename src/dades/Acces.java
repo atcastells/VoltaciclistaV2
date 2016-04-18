@@ -45,11 +45,11 @@ public class Acces {
 		dades.Ciclistes[x][y] = Ciclistes;
 	}
 
-	public String getTempsEtapes(Informacio dades, int x, int y, int z){
-		return dades.tempsEtapes[x][y][z];
+	public String getTempsEtapes(Informacio dades, int x, int y){
+		return dades.tempsEtapes[x][y];
 	}
-	public void setTempsEtapes(Informacio dades, String TempsEtapes,int x, int y, int z){
-		dades.tempsEtapes[x][y][z] = TempsEtapes;
+	public void setTempsEtapes(Informacio dades, String TempsEtapes,int x, int y){
+		dades.tempsEtapes[x][y] = TempsEtapes;
 	}
 	public int getMembresEquip(Informacio dades, int x){
 		return dades.membres_equip[x];
@@ -60,6 +60,9 @@ public class Acces {
 	public int getEquipsLenght(Informacio dades){
 		return dades.equips.length;
 	}
+	public int getCiclistesLenght(Informacio dades){
+		return dades.Ciclistes.length;
+	}
 
 	public int validarCodi(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLenght(dades);i++){
@@ -69,12 +72,23 @@ public class Acces {
 		}
 		return -1;
 	}
-
 	public int equipPle(Informacio dades,int x){
 		if(getMembresEquip(dades,x) < dades.MAX_X_EQUIP){
 			return getMembresEquip(dades,x);
 		}
 		return -1;
+	}
+	public int dniExistent (Informacio dades, String text){
+		for(int i = 0; i < getCiclistesLenght(dades); i++){
+			if(getCiclistes(dades,i,0).equalsIgnoreCase(text)){
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	public void inscripcioCiclista(Informacio dades,String[] arrayDades){
+
 	}
 
 
