@@ -30,6 +30,7 @@ public class Principal {
 								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
 								break;
 							case 2:
+
 								break;
 						}
 					}
