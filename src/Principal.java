@@ -2,7 +2,15 @@ import dades.Acces;
 import dades.Informacio;
 
 /**
- * Created by acastells on 04/04/16.
+ * Versio 0.1
+ *
+ * Autors:  Aaron Castells, Jose Febrer, Ruben Serret, Jasmina Cubedo
+ *
+ * Descripció:
+ *
+ * Programa per gestionar la base de dades d'una volta ciclista, afegir jugadors, establir els temps i crear informes de
+ * premis.
+ *
  */
 public class Principal {
 	public static void main (String[] args){
@@ -40,6 +48,8 @@ public class Principal {
 						controlMenuCompeticio = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCompeticio){
 							case 1:
+								//Si hi han Ciclistes
+								afegirTemps();
 								break;
 							case 2:
 								break;
@@ -114,6 +124,19 @@ public class Principal {
 
 
 	}
+
+	/*Funcio per afegir el temps a les etapes*/
+	void afegirTemps(){
+		//Declaració de variables
+		int ciclista = 0;
+		int etapa = 0;
+		int temps = 0;
+		//Imprimim el llistat de jugadors
+
+
+		return;
+	}
+
 	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Sortir"};
 	String[] menuGestioCiclistes = {"Inscriure","Llistar","Tornar"};
 	String[] menuCompeticio = {"Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
