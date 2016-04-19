@@ -1,24 +1,16 @@
-Descripció:
-  Programa per gestionar una volta ciclista, amb etapes, equips, premis i remuneracions predefinides.
-  Podem inscriure ciclistes, afegir els temps de cada cilista i generar informes de premis.
+# Descripció:
+      Programa per gestionar una volta ciclista, amb etapes, equips, premis i remuneracions predefinides.
+      Podem inscriure ciclistes, afegir els temps de cada cilista i generar informes de premis.
 
-Menu Principal
+##  Menu Principal
 
-  Gestió de ciclistes.
-  
-    Inscriure.
-    
-    Llistar.
-    
-  Gestió de la competició.
-  
-    Enregistrar temps.
-    
-    Informe per Ciclista.
-    
-    Informe per Etapa.
-    
-    Informe de guanyadors.
-    
-    Llista de remuneracións a abonar a cada ciclista.
-    
+1. Gestió de ciclistes
+    1. Inscriure
+    2.  Llistar
+2. Gestió de la competició.
+    1. Enregistrar temps.
+    2. Informe per Ciclista.
+    3. Informe per Etapa.
+    4. Informe de guanyadors.
+    5. Llista de remuneracións a abonar a cada ciclista.
+
