@@ -45,10 +45,10 @@ public class Acces {
 		dades.Ciclistes[x][y] = Ciclistes;
 	}
 
-	public String getTempsEtapes(Informacio dades, int x, int y){
+	public int getTempsEtapes(Informacio dades, int x, int y){
 		return dades.tempsEtapes[x][y];
 	}
-	public void setTempsEtapes(Informacio dades, String TempsEtapes,int x, int y){
+	public void setTempsEtapes(Informacio dades, int TempsEtapes,int x, int y){
 		dades.tempsEtapes[x][y] = TempsEtapes;
 	}
 	public int getMembresEquip(Informacio dades, int x){
