@@ -76,8 +76,15 @@ public class Acces {
 		}
 		return -1;
 	}
+/* Fer un return del nom del ciclista, DNI i Dorsal */
+	public String ciclistes_toString(Informacio dades){
+		String ciclistes = "";
+		for (int i = 0; i<5; i++){
+			ciclistes += getCiclistes(dades,i, 0);
+			ciclistes += getCiclistes(dades,i, 1);
+			ciclistes += getCiclistes(dades,i, 3);
+		}
 
-
-
+	}
 
 }
