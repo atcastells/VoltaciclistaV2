@@ -14,3 +14,7 @@
     4. Informe de guanyadors.
     5. Llista de remuneracións a abonar a cada ciclista.
 
+## TODO
+
+1. Min. lletres nom
+2. Error equip ple
