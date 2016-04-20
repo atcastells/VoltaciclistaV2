@@ -39,7 +39,10 @@ public class Principal {
 								break;
 							case 2:
 								if(acces.numCiclistes(informacio) != 0) {
-									//acces.ciclistes_toString(informacio(gui, acces, informacio));
+									gui.imprimir(acces.ciclistes_toString(informacio));
+								}
+								else{
+									gui.imprimir("No hi han ciclistes inscrits/n");
 								}
 								break;
 						}
