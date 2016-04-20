@@ -110,7 +110,7 @@ public class Principal {
 					dni = gui.readString();
 				}
 				/*Nom*/
-				gui.imprimir("Introdueix el nom del Ciclista: ");
+				gui.imprimir("Introdueix el nom del Ciclista:");
 				nom = gui.readString();
 				/*DataNaixement*/
 				dataNaixement = gui.funcioData();
