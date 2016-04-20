@@ -42,19 +42,19 @@ public class Biblioteca {
 		/*Anys*/
 		do{
 			anys = readInt("Any: ");
-			imprimir("\n");
+			ln();
 		}
 		while (2016 - anys > 99 && 2016 - anys < 16);
 		/*Mesos*/
 		do{
 			mesos = readInt("Mes: ");
-			imprimir("\n");
+			ln();
 		}
 		while (mesos <= 0 && mesos > 12);
 		/*Dies*/
 		do{
 			dies = readInt("Dia: ");
-			imprimir("\n");
+			ln();
 		}
 		while (dies > 31);
 

@@ -17,7 +17,6 @@
 ## TODO
 1. Reescriure Inscripció.
     * FET
-2. Min. lletres nom.
-3. Error equip ple.
-4. Funcio comprobar dni a BOOLEAN.
-5. Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).
+2. Error equip ple.
+3. Funcio comprobar dni a BOOLEAN.
+4. Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).
