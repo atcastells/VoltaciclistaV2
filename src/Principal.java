@@ -103,9 +103,8 @@ public class Principal {
 		do{
 			if(ajuda){
 				gui.imprimir("Aquests son els equips disponibles.\n");
-				for (int i = 0;i < acces.getEquipsLength(dades);i++){
-					gui.imprimir(acces.getEquips(dades,i,1)+"    "+acces.getEquips(dades,i,0)+"\n");
-				}
+				gui.ln();
+					gui.funcioTaula(columnesEquip,acces.getEquips(dades));
 			}
 			gui.imprimir("Escriu el codi del equip: ");
 			equip = gui.readString();
@@ -146,5 +145,7 @@ public class Principal {
 	String[] menuCompeticio = {"Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
 
 	/*****************ARRAYS COLUMNES**************************/
-	String[] columnesEquip = {"Nom", "Codi"};
+	String[] columnesEquip = {"Codi equip", "Nom"};
+	String[] columnesEtapes = {"Num. Etapa", "Població Inici","Població Final", "Tipus terreny"};
+	String[] columnesCiclistes = {"DNI","Nom","Data de naixement","Codi Equip","Dorsal"};
 }

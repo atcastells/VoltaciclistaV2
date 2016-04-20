@@ -71,6 +71,12 @@ public class Acces {
 	public String[][] getEquips(Informacio dades){
 		return dades.equips;
 	}
+	public String[][] getEtapes(Informacio dades){
+		return dades.etapes;
+	}
+	public String[][] getCiclistes(Informacio dades){
+		return dades.Ciclistes;
+	}
 	public int numEquip(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLength(dades);i++){
 			if(getEquips(dades,i,0).equalsIgnoreCase(text)){
