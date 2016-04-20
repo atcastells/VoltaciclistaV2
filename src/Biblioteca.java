@@ -50,7 +50,7 @@ public class Biblioteca {
 			mesos = readInt("Mes: ");
 			imprimir("\n");
 		}
-		while (mesos > 0 && mesos <= 12);
+		while (mesos <= 0 && mesos > 12);
 		/*Dies*/
 		do{
 			dies = readInt("Dia: ");
