@@ -19,5 +19,4 @@
 2. Min. lletres nom.
 3. Error equip ple.
 4. Funcio comprobar dni a BOOLEAN.
-5. Funció que autocompleta el nom en cas de ser menor a 3 caracters amb *.
-    * Aaron
+5. Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).
