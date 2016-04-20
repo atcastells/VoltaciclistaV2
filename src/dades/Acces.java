@@ -136,7 +136,7 @@ public class Acces {
 			ciclistes += getCiclistes(dades,i, 3);
 			n_ciclistaInt=0;
 		}
-		return "";
+		return ciclistes;
 	}
 
 
