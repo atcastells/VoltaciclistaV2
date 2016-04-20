@@ -15,7 +15,8 @@
     5. Llista de remuneracións a abonar a cada ciclista.
 
 ## TODO
-1. Reescriure Inscripció
-2. Min. lletres nom
-3. Error equip ple
-4. funcio comprobar dni a BOOLEAN
+1. Reescriure Inscripció.
+2. Min. lletres nom.
+3. Error equip ple.
+4. Funcio comprobar dni a BOOLEAN.
+5. Funció que autocompleta el nom en cas de ser menor a 3 caracters amb *.
