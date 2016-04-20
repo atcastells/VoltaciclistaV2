@@ -93,10 +93,10 @@ public class Acces {
 	public void inscripcioCiclista(Informacio dades,String[] arrayDades){
 
 	}
-	public int numCiclistes(Informacio dades, int x){
+	public int numCiclistes(Informacio dades){
 		int contador = 0;
 		for(int i = 0; i < getMembresLength(dades); i++){
-			contador = getMembresEquip(dades, x) + contador;
+			contador = getMembresEquip(dades,i) + contador;
 			}
 		if(contador == 0){
 			return 1;
