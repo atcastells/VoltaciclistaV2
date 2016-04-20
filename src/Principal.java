@@ -126,6 +126,8 @@ public class Principal {
 		return dni;
 	}
 
+	/****************FUNCIONS AUXILIARS COMPETICIÓ***********************/
+
 	/*Funcio per afegir el temps a les etapes*/
 	void afegirTemps(){
 		//Declaració de variables
