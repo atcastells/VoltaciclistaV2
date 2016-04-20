@@ -38,11 +38,11 @@ public class Principal {
 								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
 								break;
 							case 2:
-								if(acces.numCiclistes(informacio) != 0) {
+								if(acces.numCiclistes(informacio) < 1) {
 									gui.imprimir(acces.ciclistes_toString(informacio));
 								}
 								else{
-									gui.imprimir("No hi han ciclistes inscrits/n");
+									gui.imprimir("No hi han ciclistes inscrits\n");
 								}
 								break;
 						}
