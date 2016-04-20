@@ -75,4 +75,32 @@ public class Biblioteca {
 	void ln(){
 	imprimir("\n");
 	};
+
+	void funcioTaula(String[] rows, String[][] dades){
+		int length = 0;
+		int numRows = rows.length;
+		int[] rowsLength = new int[numRows];
+		String taula = "";
+		/**Calculem la mida màxima de la columna*/
+
+		for(int i = 0; i < numRows;i++){
+			for (int j = 0;j < dades[0].length;j++){
+				if(dades[j][i].length() > length){
+					length += dades[j][i].length();
+				}
+			}
+			rowsLength[i] = length;
+		}
+
+		/**Imprimim les columnes*/
+		for (int i = 0;i < numRows; i++){
+			taula += rows[i];
+			for (int j = 0; i <= (rowsLength[i] - rows[i].length());i++){
+				taula+=" ";
+			}
+			taula+="\t";
+		}
+		taula+="\n";
+		imprimir(taula);
+	}
 }

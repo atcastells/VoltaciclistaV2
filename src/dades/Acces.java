@@ -68,6 +68,9 @@ public class Acces {
 		return dades.membres_equip.length;
 	}
 
+	public String[][] getEquips(Informacio dades){
+		return dades.equips;
+	}
 	public int numEquip(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLength(dades);i++){
 			if(getEquips(dades,i,0).equalsIgnoreCase(text)){
@@ -115,7 +118,7 @@ public class Acces {
 		return contador;
 	}
 
-	/* Funció que retorna el numero del ciclista, el seu nom, el seu DNI i el seu dorsal */
+	/** Funció que retorna el numero del ciclista, el seu nom, el seu DNI i el seu dorsal */
 	public String ciclistes_toString(Informacio dades){
 		String ciclistes = "";
 		int n_ciclista = 1;

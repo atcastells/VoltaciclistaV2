@@ -104,7 +104,7 @@ public class Principal {
 			if(ajuda){
 				gui.imprimir("Aquests son els equips disponibles.\n");
 				for (int i = 0;i < acces.getEquipsLength(dades);i++){
-					gui.imprimir(acces.getEquips(dades,i,0)+"    "+acces.getEquips(dades,i,0)+"\n");
+					gui.imprimir(acces.getEquips(dades,i,1)+"    "+acces.getEquips(dades,i,0)+"\n");
 				}
 			}
 			gui.imprimir("Escriu el codi del equip: ");
@@ -139,7 +139,12 @@ public class Principal {
 		return;
 	}
 
+
+	/***************ARRAYS MENUS*****************/
 	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Sortir"};
 	String[] menuGestioCiclistes = {"Inscriure","Llistar","Tornar"};
 	String[] menuCompeticio = {"Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
+
+	/*****************ARRAYS COLUMNES**************************/
+	String[] columnesEquip = {"Nom", "Codi"};
 }
