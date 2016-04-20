@@ -15,6 +15,7 @@
     5. Llista de remuneracións a abonar a cada ciclista.
 
 ## TODO
-
-1. Min. lletres nom
-2. Error equip ple
+1. Reescriure Inscripció
+2. Min. lletres nom
+3. Error equip ple
+4. funcio comprobar dni a BOOLEAN
