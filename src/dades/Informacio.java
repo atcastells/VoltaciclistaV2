@@ -40,11 +40,18 @@ public class Informacio {
 	/* Array que guarda el import assignat a cada premi */
 	protected double[] importPremi={9000, 4500, 3000, 5000};
 
-	/* Array que guarda l'informació de registre dels ciclistes. Es guardara: el nom del ciclista, el codi del equip, el DNI, el nom i la data de naixement */
-	protected String [][] Ciclistes = new String [equips.length*5] [4];
+	/* Array que guarda l'informació de registre dels ciclistes. Es guardara: el nom del ciclista, el codi del equip, el DNI, el nom i la data de naixement .
+
+	* Posició 0: 	DNI
+	* Posició 1:	Nom
+	* Posició 2:	Data Naixement
+	* Posició 3:	Codi Equip
+	* Posició 4:	Dorsal
+	* */
+	protected String [][] Ciclistes = new String [equips.length*MAX_X_EQUIP] [5];
 
 	/* Array per a guardar el registre de les dades de la volta. Es guardara: el nom del ciclista, el nº de la etapa, el temps en segons */
-	protected String [][] tempsEtapes = new String[Ciclistes.length][etapes.length];
+	protected int [][] tempsEtapes = new int[Ciclistes.length][etapes.length];
 
 	/* Array que guarda el nº de membres que te cada equip */
 	protected int [] membres_equip = {0, 0, 0, 0, 0, 0, 0, 0, 0};

@@ -2,7 +2,15 @@ import dades.Acces;
 import dades.Informacio;
 
 /**
- * Created by acastells on 04/04/16.
+ * Versio 0.1
+ *
+ * Autors:  Aaron Castells, Jose Febrer, Ruben Serret, Jasmina Cubedo
+ *
+ * Descripció:
+ *
+ * Programa per gestionar la base de dades d'una volta ciclista, afegir jugadors, establir els temps i crear informes de
+ * premis.
+ *
  */
 public class Principal {
 	public static void main (String[] args){
@@ -43,6 +51,8 @@ public class Principal {
 						controlMenuCompeticio = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCompeticio){
 							case 1:
+								//Si hi han Ciclistes
+								afegirTemps();
 								break;
 							case 2:
 								break;
@@ -65,7 +75,7 @@ public class Principal {
 		String dni = "";
 		String dataNaixement = "";
 		String nom = "";
-		String[] dadesCiclista = new String[6];
+		String[] dadesCiclista = new String[7];
 		String dorsal = "";
 		int indexEquip;
 		int numDorsal;
@@ -75,26 +85,34 @@ public class Principal {
 				gui.imprimir("Introdueix el codi equip del Ciclista: ");
 				equip = gui.readString();
 			}
-			while(acces.validarCodi(info,equip) >= 0);
-			indexEquip = acces.validarCodi(info,equip);
+			while(acces.numEquip(info,equip) < 0);
+			indexEquip = acces.numEquip(info,equip);
 		/*Comprobem si el equip esta ple*/
-			if(acces.equipPle(info,indexEquip) == -1){
+			if(acces.numEquip(info,indexEquip) == -1){
 				gui.imprimir("El equip està ple.");
 				return null;
 			}
 		else {
-				numDorsal = acces.equipPle(info,indexEquip);
+				numDorsal = acces.numEquip(info,indexEquip);
 				/*DNI*/
-				do{
+				if (acces.numCiclistes(info) > 0){
+					do{
+						gui.imprimir("Introdueix el DNI del Ciclista: ");
+						dni = gui.readString();
+					}
+					while (acces.dniExistent(info,dni) >= 0);
+				}
+				else {
 					gui.imprimir("Introdueix el DNI del Ciclista: ");
 					dni = gui.readString();
 				}
-				while (acces.dniExistent(info,dni) != -1);
 				/*Nom*/
 				gui.imprimir("Introdueix el nom del Ciclista: ");
 				nom = gui.readString();
 				/*DataNaixement*/
 				dataNaixement = gui.funcioData();
+				/*Dorsal*/
+				dorsal = gui.funcioDorsal(nom,numDorsal,equip);
 			}
 
 		dadesCiclista[0] = dni;
@@ -102,12 +120,26 @@ public class Principal {
 		dadesCiclista[2] = dataNaixement;
 		dadesCiclista[3] = dorsal;
 		dadesCiclista[4] = Integer.toString(indexEquip);
-		dadesCiclista[5] = Integer.toString(numDorsal);
+		dadesCiclista[5] = equip;
+		dadesCiclista[6] = Integer.toString(numDorsal);
 
 		return dadesCiclista;
 
 
 	}
+
+	/*Funcio per afegir el temps a les etapes*/
+	void afegirTemps(){
+		//Declaració de variables
+		int ciclista = 0;
+		int etapa = 0;
+		int temps = 0;
+		//Imprimim el llistat de jugadors
+
+
+		return;
+	}
+
 	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Sortir"};
 	String[] menuGestioCiclistes = {"Inscriure","Llistar","Tornar"};
 	String[] menuCompeticio = {"Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
