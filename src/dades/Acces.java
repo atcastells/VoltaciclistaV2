@@ -57,15 +57,19 @@ public class Acces {
 	public void setMembresEquip(Informacio dades, int x, int y) {
 		dades.membres_equip[x] = y;
 	}
-	public int getEquipsLenght(Informacio dades){
+	public int getEquipsLength(Informacio dades){
 		return dades.equips.length;
 	}
-	public int getCiclistesLenght(Informacio dades){
+	public int getCiclistesLength(Informacio dades){
 		return dades.Ciclistes.length;
 	}
 
+	public int getMembresLength (Informacio dades){
+		return dades.membres_equip.length;
+	}
+
 	public int numEquip(Informacio dades, String text){
-		for(int i = 0; i < getEquipsLenght(dades);i++){
+		for(int i = 0; i < getEquipsLength(dades);i++){
 			if(getEquips(dades,i,0).equalsIgnoreCase(text)){
 				return i;
 			}
@@ -79,7 +83,7 @@ public class Acces {
 		return -1;
 	}
 	public int dniExistent (Informacio dades, String text){
-		for(int i = 0; i < getCiclistesLenght(dades); i++){
+		for(int i = 0; i < getCiclistesLength(dades); i++){
 			if(getCiclistes(dades,i,0) != null){
 				if(getCiclistes(dades,i,0).equalsIgnoreCase(text)){
 					return i;
@@ -108,11 +112,14 @@ public class Acces {
 	}
 
 	public int numCiclistes(Informacio dades){
-		int membres = 0;
-		for (int i = 0;i < getEquipsLenght(dades);i++){
-			membres += getMembresEquip(dades,i);
+		int contador = 0;
+		for(int i = 0; i < getMembresLength(dades); i++){
+			contador = getMembresEquip(dades,i) + contador;
 		}
-		return membres;
+		if(contador == 0){
+			return 1;
+		}
+		return contador;
 	}
 
 

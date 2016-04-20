@@ -38,6 +38,9 @@ public class Principal {
 								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
 								break;
 							case 2:
+								if(acces.numCiclistes(informacio) != 0) {
+									//acces.ciclistes_toString(informacio(gui, acces, informacio));
+								}
 								break;
 						}
 					}
