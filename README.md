@@ -20,3 +20,4 @@
 3. Error equip ple.
 4. Funcio comprobar dni a BOOLEAN.
 5. Funció que autocompleta el nom en cas de ser menor a 3 caracters amb *.
+    * Aaron
