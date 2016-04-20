@@ -76,7 +76,7 @@ public class Acces {
 		}
 		return -1;
 	}
-	public int numEquip(Informacio dades,int x){
+	public int membresEquip(Informacio dades,int x){
 		if(getMembresEquip(dades,x) < dades.MAX_X_EQUIP){
 			return getMembresEquip(dades,x);
 		}
@@ -96,8 +96,9 @@ public class Acces {
 	public void inscripcioCiclista(Informacio dades,String[] arrayDades){
 		int numEquip = Integer.parseInt(arrayDades[4]);
 		int numCiclista = Integer.parseInt(arrayDades[6]);
-		int posicio = (numEquip * dades.MAX_X_EQUIP) + (numCiclista - 1);	//Determinem la posició del Ciclista a la Array
+		int posicio = ((numEquip) * dades.MAX_X_EQUIP) + (numCiclista);	//Determinem la posició del Ciclista a la Array
 		/*Afegim dni*/
+		System.out.print(dades+"  "+arrayDades[0]+"  "+posicio);
 		setCiclistes(dades,arrayDades[0],posicio,0);
 		/*Afegim nom*/
 		setCiclistes(dades,arrayDades[1],posicio,1);

@@ -91,12 +91,12 @@ public class Principal {
 			while(acces.numEquip(info,equip) < 0);
 			indexEquip = acces.numEquip(info,equip);
 		/*Comprobem si el equip esta ple*/
-			if(acces.numEquip(info,indexEquip) == -1){
+			if(acces.membresEquip(info,indexEquip) == -1){
 				gui.imprimir("El equip està ple.");
 				return null;
 			}
 		else {
-				numDorsal = acces.numEquip(info,indexEquip);
+				numDorsal = acces.membresEquip(info,indexEquip);
 				/*DNI*/
 				if (acces.numCiclistes(info) > 0){
 					do{

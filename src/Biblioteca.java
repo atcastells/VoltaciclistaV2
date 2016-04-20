@@ -47,7 +47,7 @@ public class Biblioteca {
 		while (2016 - anys > 99 && 2016 - anys < 16);
 		/*Mesos*/
 		do{
-			mesos = readInt("Mesos: ");
+			mesos = readInt("Mes: ");
 			imprimir("\n");
 		}
 		while (mesos < 0 && mesos > 12);
