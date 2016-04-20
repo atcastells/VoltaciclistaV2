@@ -38,7 +38,7 @@ public class Principal {
 								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
 								break;
 							case 2:
-								if(acces.numCiclistes(informacio) < 1) {
+								if(acces.numCiclistes(informacio) > 0) {
 									gui.imprimir(acces.ciclistes_toString(informacio));
 								}
 								else{
