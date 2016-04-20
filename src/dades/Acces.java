@@ -45,11 +45,11 @@ public class Acces {
 		dades.Ciclistes[x][y] = Ciclistes;
 	}
 
-	public String getTempsEtapes(Informacio dades, int x, int y, int z){
-		return dades.tempsEtapes[x][y][z];
+	public int getTempsEtapes(Informacio dades, int x, int y){
+		return dades.tempsEtapes[x][y];
 	}
-	public void setTempsEtapes(Informacio dades, String TempsEtapes,int x, int y, int z){
-		dades.tempsEtapes[x][y][z] = TempsEtapes;
+	public void setTempsEtapes(Informacio dades, int TempsEtapes,int x, int y){
+		dades.tempsEtapes[x][y] = TempsEtapes;
 	}
 	public int getMembresEquip(Informacio dades, int x){
 		return dades.membres_equip[x];
@@ -60,8 +60,11 @@ public class Acces {
 	public int getEquipsLenght(Informacio dades){
 		return dades.equips.length;
 	}
+	public int getCiclistesLenght(Informacio dades){
+		return dades.Ciclistes.length;
+	}
 
-	public int validarCodi(Informacio dades, String text){
+	public int numEquip(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLenght(dades);i++){
 			if(getEquips(dades,i,0).equalsIgnoreCase(text)){
 				return i;
@@ -69,22 +72,63 @@ public class Acces {
 		}
 		return -1;
 	}
-
-	public int equipPle(Informacio dades,int x){
+	public int numEquip(Informacio dades,int x){
 		if(getMembresEquip(dades,x) < dades.MAX_X_EQUIP){
 			return getMembresEquip(dades,x);
 		}
 		return -1;
 	}
-/* Fer un return del nom del ciclista, DNI i Dorsal */
+	public int dniExistent (Informacio dades, String text){
+		for(int i = 0; i < getCiclistesLenght(dades); i++){
+			if(getCiclistes(dades,i,0) != null){
+				if(getCiclistes(dades,i,0).equalsIgnoreCase(text)){
+					return i;
+				}
+			}
+		}
+		return -1;
+	}
+
+	public void inscripcioCiclista(Informacio dades,String[] arrayDades){
+		int numEquip = Integer.parseInt(arrayDades[4]);
+		int numCiclista = Integer.parseInt(arrayDades[6]);
+		int posicio = (numEquip * dades.MAX_X_EQUIP) + (numCiclista - 1);	//Determinem la posició del Ciclista a la Array
+		/*Afegim dni*/
+		setCiclistes(dades,arrayDades[0],posicio,0);
+		/*Afegim nom*/
+		setCiclistes(dades,arrayDades[1],posicio,1);
+		/*Afegim Data Naixement*/
+		setCiclistes(dades,arrayDades[2],posicio,2);
+		/*Afegim Dorsal*/
+		setCiclistes(dades,arrayDades[3],posicio,3);
+		/*Afegim Equip*/
+		setCiclistes(dades,arrayDades[5],posicio,4);
+		/*Sumem +1 als membres del equip*/
+		setMembresEquip(dades,numEquip,(getMembresEquip(dades,numEquip)+1));
+	}
+
+	public int numCiclistes(Informacio dades){
+		int membres = 0;
+		for (int i = 0;i < getEquipsLenght(dades);i++){
+			membres += getMembresEquip(dades,i);
+		}
+		return membres;
+	}
+	/* Fer un return del nom del ciclista, DNI i Dorsal */
 	public String ciclistes_toString(Informacio dades){
 		String ciclistes = "";
 		for (int i = 0; i<5; i++){
+			int n_ciclistaInt = Integer.parseInt(getCiclistes(dades,i,3).charAt(3)+"");
+			ciclistes +=  n_ciclistaInt;
+			ciclistes +="\t";
 			ciclistes += getCiclistes(dades,i, 0);
+			ciclistes +="\t";
 			ciclistes += getCiclistes(dades,i, 1);
+			ciclistes +="\t";
 			ciclistes += getCiclistes(dades,i, 3);
 		}
-
+		return "";
 	}
+
 
 }

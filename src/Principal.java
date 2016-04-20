@@ -27,7 +27,7 @@ public class Principal {
 						controlMenuCiclistes = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCiclistes){
 							case 1:
-								inscripcioCiclista(gui,acces,informacio);
+								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
 								break;
 							case 2:
 								break;
@@ -86,7 +86,7 @@ public class Principal {
 					gui.imprimir("Introdueix el DNI del Ciclista: ");
 					dni = gui.readString();
 				}
-				while (!acces.dniExistent(info,dni));
+				while (acces.dniExistent(info,dni) != -1);
 				/*Nom*/
 				gui.imprimir("Introdueix el nom del Ciclista: ");
 				nom = gui.readString();
