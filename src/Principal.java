@@ -31,7 +31,7 @@ public class Principal {
 								break;
 							case 2:
 								if(acces.numCiclistes(informacio) != 0) {
-									acces.ciclistes_toString(informacio(gui, acces, informacio));
+									//acces.ciclistes_toString(informacio(gui, acces, informacio));
 								}
 								break;
 						}
