@@ -97,8 +97,9 @@ public class Acces {
 		int numEquip = Integer.parseInt(arrayDades[4]);
 		int numCiclista = Integer.parseInt(arrayDades[6]);
 		int posicio = (numEquip * dades.MAX_X_EQUIP) + (numCiclista - 1);	//Determinem la posició del Ciclista a la Array
+
 		/*Afegim dni*/
-		setCiclistes(dades,arrayDades[0],posicio,0);
+		setCiclistes(dades,arrayDades[0],posicio,0 );
 		/*Afegim nom*/
 		setCiclistes(dades,arrayDades[1],posicio,1);
 		/*Afegim Data Naixement*/
