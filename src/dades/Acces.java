@@ -122,5 +122,22 @@ public class Acces {
 		return contador;
 	}
 
+	/* Fer un return del nom del ciclista, DNI i Dorsal */
+	public String ciclistes_toString(Informacio dades){
+		String ciclistes = "";
+		for (int i = 0; i<numCiclistes(Informacio dades); i++){
+			int n_ciclistaInt = Integer.parseInt(getCiclistes(dades,i,3).charAt(3)+"");
+			ciclistes +=  n_ciclistaInt;
+			ciclistes +="\t";
+			ciclistes += getCiclistes(dades,i, 0);
+			ciclistes +="\t";
+			ciclistes += getCiclistes(dades,i, 1);
+			ciclistes +="\t";
+			ciclistes += getCiclistes(dades,i, 3);
+			n_ciclistaInt=0;
+		}
+		return "";
+	}
+
 
 }
