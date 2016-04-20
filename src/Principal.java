@@ -20,7 +20,7 @@ public class Principal {
 	void inici(){
 		Biblioteca gui = new Biblioteca();
 		Acces acces = new Acces();
-		Informacio informacio = new Informacio();
+		Informacio dades = new Informacio();
 		/*Cridem al menú*/
 		int controlMenu = 0;
 		int controlMenuCiclistes = 0;
@@ -35,11 +35,24 @@ public class Principal {
 						controlMenuCiclistes = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCiclistes){
 							case 1:
-								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
+								//Declaració de variables
+								String equip = "";
+								String dni = "";
+								String dataNaixement = "";
+								String nom = "";
+								String dorsal = "";
+								
+								//Equip Existeix
+								equip = comprovacioEquip(acces,gui,dades);
+								//DNI Existeix
+								dni = comprovacioDNI(acces,gui,dades);
+								//Data Naixement
+								dataNaixement = gui.funcioData();
+								//Funcio NOM
 								break;
 							case 2:
-								if(acces.numCiclistes(informacio) > 0) {
-									gui.imprimir(acces.ciclistes_toString(informacio));
+								if(acces.numCiclistes(dades) > 0) {
+									gui.imprimir(acces.ciclistes_toString(dades));
 								}
 								else{
 									gui.imprimir("No hi han ciclistes inscrits\n");
@@ -70,6 +83,36 @@ public class Principal {
 		}
 
 
+	}
+	/****************FUNCIONS AUXILIARS INSCRIPCIO***********************/
+	String comprovacioEquip(Acces acces, Biblioteca gui,Informacio dades){
+		String equip = "";
+		boolean ajuda = false;
+		do{
+			if(ajuda){
+				gui.imprimir("Aquests son els equips disponibles.\n");
+				for (int i = 0;i < acces.getEquipsLength(dades);i++){
+					gui.imprimir(acces.getEquips(dades,i,0)+"    "+acces.getEquips(dades,i,0)+"\n");
+				}
+			}
+			gui.imprimir("Escriu el codi del equip: ");
+			equip = gui.readString();
+			ajuda = true;
+			gui.ln();
+		}
+		while ((acces.numEquip(dades,equip) <0));
+		return equip;
+	}
+	
+	String comprovacioDNI(Acces acces,Biblioteca gui,Informacio dades){
+		String dni = "";
+		do{
+			gui.imprimir("Escriu el DNI del ciclista: ");
+			dni = gui.readString();
+			gui.ln();
+		}
+		while (acces.dniExistent(dades,dni) == -1);
+		return dni;
 	}
 
 	String[] inscripcioCiclista(Biblioteca gui,Acces acces, Informacio info){

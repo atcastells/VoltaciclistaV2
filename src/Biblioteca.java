@@ -50,7 +50,7 @@ public class Biblioteca {
 			mesos = readInt("Mes: ");
 			imprimir("\n");
 		}
-		while (mesos < 0 && mesos > 12);
+		while (mesos > 0 && mesos <= 12);
 		/*Dies*/
 		do{
 			dies = readInt("Dia: ");
@@ -71,4 +71,8 @@ public class Biblioteca {
 		nom_return += equip;
 		return nom_return.toUpperCase();
 	}
+
+	void ln(){
+	imprimir("\n");
+	};
 }
