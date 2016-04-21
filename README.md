@@ -19,9 +19,10 @@
     * Testejar
 3. Funcio comprobar dni a BOOLEAN.
 4. Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).
-    * Fer algo per a quan no s'introdueix res de nom, torni al menú
 5. Crear funció per crear una taula amb les dades ordenades que se li envien.
     * FET
+6. Funció Ciclistes toString
+    * Index ciclistes de la array original
 
 ## CHANGELOG (20/04/16)
 * Funció creació de taules
