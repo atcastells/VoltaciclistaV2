@@ -19,8 +19,7 @@
     * Testejar
 3. Funcio comprobar dni a BOOLEAN.
 4. Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).
-5. Crear funció per crear una taula amb les dades ordenades que se li envien.
-    * FET
+5. ~~Crear funció per crear una taula amb les dades ordenades que se li envien.~~
 6. Funció Ciclistes toString
     * Index ciclistes de la array original
 7. Crear funció per afegir temps
@@ -31,7 +30,8 @@
     * Seleccionar Etapa
         * Mostrar taula de temps (HH:MM:SS) amb els Ciclistes
 9. Crear funció per inserir dades de mostra
-    1. Test Inserir (FET)
+    1. ~~Test Inserir~~
+        * Completar funció per inserir els 45 ciclistes
     2. Test Afegir Temps
 10. Crear funció enterPerContinuar a la biblioteca
 
