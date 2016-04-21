@@ -55,13 +55,29 @@ public class Principal {
 						switch (controlMenuCompeticio){
 							case 1:
 								//Si hi han Ciclistes
-								afegirTemps();
+								if(acces.numCiclistes(informacio) > 0) {
+									gui.imprimir(//acces.ciclistes_toString(informacio));
+									afegirTemps();
+								}
+								else{
+									gui.imprimir("No hi han ciclistes inscrits\n");
+								}
+
 								break;
 							case 2:
+								if(acces.numCiclistes(informacio) > 0) {
+									gui.imprimir(//acces.ciclistes_toString(informacio));
+											imprimirTemps();
+								}
+								else{
+									gui.imprimir("No hi han ciclistes inscrits\n");
+								}
 								break;
 							case 3:
+									guanyadors();
 								break;
 							case 4:
+								remuneracions();
 								break;
 						}
 					}
@@ -141,6 +157,16 @@ public class Principal {
 
 
 		return;
+	}
+	void imprimirTemps(){
+
+	}
+
+	void guanyadors(){
+
+	}
+	void remuneracions(){
+
 	}
 
 	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Sortir"};
