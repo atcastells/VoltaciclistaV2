@@ -21,3 +21,13 @@
 4. Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).
 5. Crear funció per crear una taula amb les dades ordenades que se li envien.
     * FET
+
+## CHANGELOG (20/04/16)
+* Funció creació de taules
+* Finalització Inserció
+
+## CHANGELOG (21/04/16)
+* Creació array de Ciclistes per a taula
+* Fixes
+    * Funció taula
+    * Aumentar contador ciclistes

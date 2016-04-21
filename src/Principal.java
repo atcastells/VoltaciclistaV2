@@ -63,7 +63,7 @@ public class Principal {
 
 							case 2:
 								if(acces.numCiclistes(dades) > 0) {
-									gui.funcioTaula(columnesEquip,acces.ciclistes_toString(dades));
+									gui.funcioTaula(columnesCiclistes,acces.ciclistes_toString(dades));
 								}
 								else{
 									gui.imprimir("No hi han ciclistes inscrits\n");

@@ -111,6 +111,9 @@ public class Acces {
 		setCiclistes(dades,dataNaixement,posicioArray,2);
 		setCiclistes(dades,equip,posicioArray,3);
 		setCiclistes(dades,dorsal,posicioArray,4);
+
+		/****************AUMENTEM EL Nº DE CICLISTES***********************/
+		setMembresEquip(dades,numEquip(dades,equip),getMembresEquip(dades,numEquip(dades,equip))+1);
 	}
 
 	public int numCiclistes(Informacio dades){
@@ -125,26 +128,28 @@ public class Acces {
 	}
 
 	/** Funció que retorna el numero del ciclista, el seu nom, el seu DNI i el seu dorsal */
-	public String[][] ciclistes_toString(Informacio dades){
-		int n_ciclista = 1;
-		String ciclistes [][] = new String[numCiclistes(dades)][4];
-		System.out.println(ciclistes.length + "\n");
+	public String[][] ciclistes_toString(Informacio dades) {
+		int n_ciclista = 0;
+		int contador = 0; //Contador on inscriure els ciclistes a la array local
 
-		boolean acces = false;
-		for (int i = 0;i < getCiclistesLength(dades);i++){
+		String ciclistes[][] = new String[numCiclistes(dades)][4];
+
+		for (int i = 0; i < getCiclistesLength(dades) && contador <= numCiclistes(dades); i++) {
 			if (getCiclistes(dades, i, 0) != null) {
-				acces = true;
-				for(int j = 0; j < ciclistes.length & acces;j++){
-					System.out.println(j+"\t"+i+"\n");
-					ciclistes[j][0] = n_ciclista+"";
-					ciclistes[j][1] = getCiclistes(dades,i,0);
-					ciclistes[j][2] = getCiclistes(dades,i,1);
-					ciclistes[j][3] = getCiclistes(dades,i,3);
-					n_ciclista++;
-					acces = false;
-				}
+				ciclistes[contador][0] = n_ciclista + "";
+				ciclistes[contador][1] = getCiclistes(dades, i, 0);
+				ciclistes[contador][2] = getCiclistes(dades, i, 1);
+				ciclistes[contador][3] = getCiclistes(dades, i, 4);
+				n_ciclista++;
+				contador++;
 			}
+
 		}
+
+		for(int i = 0; i < ciclistes.length;i++){
+			System.out.print(ciclistes[i][1]+"\n");
+		}
+
 		return ciclistes;
 	}
 }

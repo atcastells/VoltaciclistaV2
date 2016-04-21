@@ -85,7 +85,7 @@ public class Biblioteca {
 
 		/**Calculem la mida màxima de la columna*/
 		for(int i = 0; i < numRows;i++){
-			for (int j = 0;j < dades[0].length;j++){
+			for (int j = 0;j < dades.length;j++){
 				if(dades[j][i].length() > length){
 					length += dades[j][i].length();
 				}
