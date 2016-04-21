@@ -38,6 +38,7 @@
         * Completar funció per inserir els 45 ciclistes
     2. Test Afegir Temps
 10. Crear funció enterPerContinuar a la biblioteca
+11. Crear funció tempsEtapesToString
 
     
 ## CHANGELOG (20/04/16)
