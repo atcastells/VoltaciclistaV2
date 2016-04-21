@@ -79,8 +79,8 @@ public class Principal {
 						switch (controlMenuCompeticio){
 							case 1:
 								//Si hi han Ciclistes
-								if(acces.numCiclistes(informacio) > 0) {
-									gui.imprimir(//acces.ciclistes_toString(informacio));
+								if(acces.numCiclistes(dades) > 0) {
+									gui.imprimir(acces.ciclistes_toString(dades));
 									afegirTemps();
 								}
 								else{
@@ -89,8 +89,8 @@ public class Principal {
 
 								break;
 							case 2:
-								if(acces.numCiclistes(informacio) > 0) {
-									gui.imprimir(//acces.ciclistes_toString(informacio));
+								if(acces.numCiclistes(dades) > 0) {
+									gui.imprimir(acces.ciclistes_toString(dades));
 											imprimirTemps();
 								}
 								else{
