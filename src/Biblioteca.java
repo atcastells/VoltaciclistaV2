@@ -63,13 +63,33 @@ public class Biblioteca {
 	}
 	public String funcioDorsal(String nom, int num_inscripcio, String equip){
 		String nom_return = "";
-
-		for(int i=0;i<3;i++){
-			nom_return += nom.charAt(i);
+		if(nom.length() == 1){
+			for(int i=0;i<1;i++){
+				nom_return += nom.charAt(i);
+			}
+			nom_return +="**";
+			nom_return += (num_inscripcio+1);
+			nom_return += equip;
+			return nom_return.toUpperCase();
 		}
-		nom_return += (num_inscripcio+1);
-		nom_return += equip;
-		return nom_return.toUpperCase();
+		if(nom.length() ==2){
+			for(int i=0;i<2;i++){
+				nom_return += nom.charAt(i);
+			}
+			nom_return +="*";
+			nom_return += (num_inscripcio+1);
+			nom_return += equip;
+			return nom_return.toUpperCase();
+		}
+		else{
+			for(int i=0;i<3;i++){
+				nom_return += nom.charAt(i);
+			}
+			nom_return += (num_inscripcio+1);
+			nom_return += equip;
+			return nom_return.toUpperCase();
+		}
+
 	}
 
 	void ln(){
