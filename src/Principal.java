@@ -105,6 +105,13 @@ public class Principal {
 						}
 					}
 					break;
+				case 3:
+					boolean inserir = false;
+					if(!inserir){
+						inserirCiclistes(dades,acces,gui);
+						inserir = true;
+					}
+					break;
 			}
 		}
 
@@ -167,7 +174,7 @@ public class Principal {
 
 
 	/***************ARRAYS MENUS*****************/
-	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Sortir"};
+	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Test","Sortir"};
 	String[] menuGestioCiclistes = {"Inscriure","Llistar","Tornar"};
 	String[] menuCompeticio = {"Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
 
@@ -175,4 +182,24 @@ public class Principal {
 	String[] columnesEquip = {"Codi equip", "Nom"};
 	String[] columnesEtapes = {"Num. Etapa", "Població Inici","Població Final", "Tipus terreny"};
 	String[] columnesCiclistes = {"Nº ciclista","DNI","Nom","Dorsal"};
+
+	/*****************FUNCIONS DE PROVA**************************/
+	void inserirCiclistes(Informacio dades, Acces acces,Biblioteca gui){
+		String[][]dadesCiclistes = {
+				{"Aaron","47822563C","20/02/1989","ONZ"},
+				{"Jose","47822563Z","20/03/1989","BIC"},
+				{"Ruben","47822563Y","20/04/1989","FON"},
+				{"Josep","47822563Z","20/05/1989","TNK"},
+				{"Oscar","47822563A","21/02/1989","MTX"},
+				{"Jesus","45822563C","20/11/1989","MVX"}};
+		for(int i = 0; i < dadesCiclistes.length;i++){
+			String nom = dadesCiclistes[i][0];
+			String dni = dadesCiclistes[i][1];
+			String dataNaixement = dadesCiclistes[i][2];
+			String equip = dadesCiclistes[i][3];
+			String dorsal = gui.funcioDorsal(nom,acces.getMembresEquip(dades,acces.numEquip(dades,equip)),equip);
+			acces.inscripcioCiclista(dades,nom,dni,dataNaixement,equip,dorsal);
+		}
+
+	}
 }

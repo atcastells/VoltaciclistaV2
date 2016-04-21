@@ -104,7 +104,6 @@ public class Acces {
 
 	public void inscripcioCiclista(Informacio dades, String nom, String dni, String dataNaixement, String equip, String dorsal){
 		int posicioArray = (numEquip(dades,equip) * dades.MAX_X_EQUIP) + (Integer.parseInt(dorsal.charAt(3)+"")-1);	//Posició del ciclista a la array
-
 		/***************INSERIM DADES A LA ARRAY*****************/
 		setCiclistes(dades,dni,posicioArray,0);
 		setCiclistes(dades,nom,posicioArray,1);

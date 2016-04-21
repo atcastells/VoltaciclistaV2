@@ -31,7 +31,10 @@
     * Seleccionar Etapa
         * Mostrar taula de temps (HH:MM:SS) amb els Ciclistes
 9. Crear funció per inserir dades de mostra
-    1. Test Inserir (EN CURS)
+    1. Test Inserir (FET)
+    2. Test Afegir Temps
+10. Crear funció enterPerContinuar a la biblioteca
+
     
 ## CHANGELOG (20/04/16)
 * Funció creació de taules
