@@ -122,7 +122,7 @@ public class Acces {
 			contador = getMembresEquip(dades,i) + contador;
 		}
 		if(contador == 0){
-			return 1;
+			return contador;
 		}
 		return contador;
 	}

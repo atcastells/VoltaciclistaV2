@@ -80,7 +80,7 @@ public class Principal {
 							case 1:
 								//Si hi han Ciclistes
 								if(acces.numCiclistes(dades) > 0) {
-									gui.funcioTaula(columnesEquip,acces.ciclistes_toString(dades));
+									gui.funcioTaula(columnesEtapes,acces.getEtapes(dades));
 									afegirTemps();
 								}
 								else{
@@ -89,9 +89,8 @@ public class Principal {
 
 								break;
 							case 2:
-								if(acces.numCiclistes(dades) >= 0) {
-									gui.funcioTaula(columnesEtapes,acces.getEtapes(dades));
-											imprimirTemps();
+								if(acces.numCiclistes(dades) > 0) {
+									imprimirTemps();
 								}
 								else{
 									gui.imprimir("No hi han ciclistes inscrits\n");

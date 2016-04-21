@@ -23,7 +23,16 @@
     * FET
 6. Funció Ciclistes toString
     * Index ciclistes de la array original
-
+7. Crear funció per afegir temps
+    * Seleccionar Etapa
+        * Seleccionar Ciclista
+            * Afegir Temps (en segons)
+8. Crear funció per mostrar el temps de les etapes
+    * Seleccionar Etapa
+        * Mostrar taula de temps (HH:MM:SS) amb els Ciclistes
+9. Crear funció per inserir dades de mostra
+    1. Test Inserir (EN CURS)
+    
 ## CHANGELOG (20/04/16)
 * Funció creació de taules
 * Finalització Inserció
@@ -33,3 +42,5 @@
 * Fixes
     * Funció taula
     * Aumentar contador ciclistes
+* Arreglat numCiclistes
+    * Retornava 1 si habien 0 ciclistes
