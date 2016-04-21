@@ -125,21 +125,23 @@ public class Acces {
 	}
 
 	/** Funció que retorna el numero del ciclista, el seu nom, el seu DNI i el seu dorsal */
-	public String ciclistes_toString(Informacio dades){
-		String ciclistes = "";
+	public String[][] ciclistes_toString(Informacio dades){
 		int n_ciclista = 1;
-		for(int i = 0; i < getCiclistesLength(dades); i++) {
-			if (getCiclistes(dades, i, 0) != null) {
-				ciclistes +=  n_ciclista;
-				ciclistes +="\t";
-				ciclistes += getCiclistes(dades,i, 0);
-				ciclistes +="\t";
-				ciclistes += getCiclistes(dades,i, 1);
-				ciclistes +="\t";
-				ciclistes += getCiclistes(dades,i, 3);
-				ciclistes += "\n";
-				n_ciclista++;
+		String ciclistes [][] = new String[numCiclistes(dades)][4];
+		System.out.println(ciclistes.length + "\n");
+		for(int i = 0; i < ciclistes.length; i++) {
+			for (int j=0; j<getCiclistesLength(dades); j++){
+				if (getCiclistes(dades, i, 0) != null) {
+					System.out.println(i);
+					ciclistes[i][0] = n_ciclista+"";
+					ciclistes[i][1] = getCiclistes(dades,j,0);
+					ciclistes[i][2] = getCiclistes(dades,j,1);
+					ciclistes[i][3] = getCiclistes(dades,j,3);
+					n_ciclista++;
+					System.out.println(i);
+				}
 			}
+
 		}
 		return ciclistes;
 	}
