@@ -63,7 +63,7 @@ public class Principal {
 
 							case 2:
 								if(acces.numCiclistes(dades) > 0) {
-									gui.imprimir(acces.ciclistes_toString(dades));
+									gui.funcioTaula(columnesEquip,acces.ciclistes_toString(dades));
 								}
 								else{
 									gui.imprimir("No hi han ciclistes inscrits\n");
@@ -80,7 +80,7 @@ public class Principal {
 							case 1:
 								//Si hi han Ciclistes
 								if(acces.numCiclistes(dades) > 0) {
-									gui.imprimir(acces.ciclistes_toString(dades));
+									gui.funcioTaula(columnesEquip,acces.ciclistes_toString(dades));
 									afegirTemps();
 								}
 								else{
@@ -90,7 +90,7 @@ public class Principal {
 								break;
 							case 2:
 								if(acces.numCiclistes(dades) > 0) {
-									gui.imprimir(acces.ciclistes_toString(dades));
+									gui.funcioTaula(columnesEquip,acces.ciclistes_toString(dades));
 											imprimirTemps();
 								}
 								else{
@@ -175,5 +175,5 @@ public class Principal {
 	/*****************ARRAYS COLUMNES**************************/
 	String[] columnesEquip = {"Codi equip", "Nom"};
 	String[] columnesEtapes = {"Num. Etapa", "Població Inici","Població Final", "Tipus terreny"};
-	String[] columnesCiclistes = {"DNI","Nom","Data de naixement","Codi Equip","Dorsal"};
+	String[] columnesCiclistes = {"Nº ciclista","DNI","Nom","Dorsal"};
 }
