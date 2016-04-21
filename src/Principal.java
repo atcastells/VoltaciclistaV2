@@ -79,13 +79,29 @@ public class Principal {
 						switch (controlMenuCompeticio){
 							case 1:
 								//Si hi han Ciclistes
-								afegirTemps();
+								if(acces.numCiclistes(dades) > 0) {
+									gui.imprimir(acces.ciclistes_toString(dades));
+									afegirTemps();
+								}
+								else{
+									gui.imprimir("No hi han ciclistes inscrits\n");
+								}
+
 								break;
 							case 2:
+								if(acces.numCiclistes(dades) > 0) {
+									gui.imprimir(acces.ciclistes_toString(dades));
+											imprimirTemps();
+								}
+								else{
+									gui.imprimir("No hi han ciclistes inscrits\n");
+								}
 								break;
 							case 3:
+									guanyadors();
 								break;
 							case 4:
+								remuneracions();
 								break;
 						}
 					}
@@ -138,6 +154,16 @@ public class Principal {
 
 
 		return;
+	}
+	void imprimirTemps(){
+
+	}
+
+	void guanyadors(){
+
+	}
+	void remuneracions(){
+
 	}
 
 
