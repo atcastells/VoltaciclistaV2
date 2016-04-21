@@ -15,6 +15,9 @@
     5. Llista de remuneracións a abonar a cada ciclista.
 
 ## TODO
-
-1. Min. lletres nom
-2. Error equip ple
+1. Error equip ple.
+    * Testejar
+3. Funcio comprobar dni a BOOLEAN.
+4. Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).
+5. Crear funció per crear una taula amb les dades ordenades que se li envien.
+    * FET

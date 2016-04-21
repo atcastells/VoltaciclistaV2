@@ -1,6 +1,8 @@
 import dades.Acces;
 import dades.Informacio;
 
+import javax.sound.midi.MidiDevice;
+
 /**
  * Versio 0.1
  *
@@ -20,7 +22,7 @@ public class Principal {
 	void inici(){
 		Biblioteca gui = new Biblioteca();
 		Acces acces = new Acces();
-		Informacio informacio = new Informacio();
+		Informacio dades = new Informacio();
 		/*Cridem al menú*/
 		int controlMenu = 0;
 		int controlMenuCiclistes = 0;
@@ -35,11 +37,33 @@ public class Principal {
 						controlMenuCiclistes = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCiclistes){
 							case 1:
-								acces.inscripcioCiclista(informacio,inscripcioCiclista(gui,acces,informacio));
+
+								//Declaració de variables
+								String equip = "";
+								String dni = "";
+								String dataNaixement = "";
+								String nom = "";
+								String dorsal = "";
+								
+								//Equip Existeix
+								equip = comprovacioEquip(acces,gui,dades);
+								//DNI Existeix
+								dni = comprovacioDNI(acces,gui,dades);
+								//Data Naixement
+								dataNaixement = gui.funcioData();
+								//Nom
+								gui.imprimir("Escriu el nom del ciclista: ");
+								nom = gui.readString();
+								gui.ln();
+								//Dorsal
+								dorsal = gui.funcioDorsal(nom,acces.membresEquip(dades,acces.numEquip(dades,equip)),equip);
+								//Enviem les dades per inserir
+								acces.inscripcioCiclista(dades,nom,dni,dataNaixement,equip,dorsal);
 								break;
+
 							case 2:
-								if(acces.numCiclistes(informacio) > 0) {
-									gui.imprimir(acces.ciclistes_toString(informacio));
+								if(acces.numCiclistes(dades) > 0) {
+									gui.imprimir(acces.ciclistes_toString(dades));
 								}
 								else{
 									gui.imprimir("No hi han ciclistes inscrits\n");
@@ -87,65 +111,38 @@ public class Principal {
 
 
 	}
+	/****************FUNCIONS AUXILIARS INSCRIPCIO***********************/
 
-	String[] inscripcioCiclista(Biblioteca gui,Acces acces, Informacio info){
-		/*Variables del ciclista*/
+	String comprovacioEquip(Acces acces, Biblioteca gui,Informacio dades){
 		String equip = "";
-		String dni = "";
-		String dataNaixement = "";
-		String nom = "";
-		String[] dadesCiclista = new String[7];
-		String dorsal = "";
-		int indexEquip;
-		int numDorsal;
-
-		/*Comprobem si el equip existeix*/
-			do{
-				gui.imprimir("Introdueix el codi equip del Ciclista: ");
-				equip = gui.readString();
+		boolean ajuda = false;
+		do{
+			if(ajuda){
+				gui.imprimir("Aquests son els equips disponibles.\n");
+				gui.ln();
+					gui.funcioTaula(columnesEquip,acces.getEquips(dades));
 			}
-			while(acces.numEquip(info,equip) < 0);
-			indexEquip = acces.numEquip(info,equip);
-		/*Comprobem si el equip esta ple*/
-			if(acces.membresEquip(info,indexEquip) == -1){
-				gui.imprimir("El equip està ple.");
-				return null;
-			}
-		else {
-				numDorsal = acces.membresEquip(info,indexEquip);
-				/*DNI*/
-				if (acces.numCiclistes(info) > 0){
-					do{
-						gui.imprimir("Introdueix el DNI del Ciclista: ");
-						dni = gui.readString();
-					}
-					while (acces.dniExistent(info,dni) >= 0);
-				}
-				else {
-					gui.imprimir("Introdueix el DNI del Ciclista: ");
-					dni = gui.readString();
-				}
-				/*Nom*/
-				gui.imprimir("Introdueix el nom del Ciclista:");
-				nom = gui.readString();
-				/*DataNaixement*/
-				dataNaixement = gui.funcioData();
-				/*Dorsal*/
-				dorsal = gui.funcioDorsal(nom,numDorsal,equip);
-			}
-
-		dadesCiclista[0] = dni;
-		dadesCiclista[1] = nom;
-		dadesCiclista[2] = dataNaixement;
-		dadesCiclista[3] = dorsal;
-		dadesCiclista[4] = Integer.toString(indexEquip);
-		dadesCiclista[5] = equip;
-		dadesCiclista[6] = Integer.toString(numDorsal);
-
-		return dadesCiclista;
-
-
+			gui.imprimir("Escriu el codi del equip: ");
+			equip = gui.readString();
+			ajuda = true;
+			gui.ln();
+		}
+		while ((acces.numEquip(dades,equip) <0));
+		return equip;
 	}
+	
+	String comprovacioDNI(Acces acces,Biblioteca gui,Informacio dades){
+		String dni = "";
+		do{
+			gui.imprimir("Escriu el DNI del ciclista: ");
+			dni = gui.readString();
+			gui.ln();
+		}
+		while (!(acces.dniExistent(dades,dni) == -1));
+		return dni;
+	}
+
+	/****************FUNCIONS AUXILIARS COMPETICIÓ***********************/
 
 	/*Funcio per afegir el temps a les etapes*/
 	void afegirTemps(){
@@ -169,7 +166,14 @@ public class Principal {
 
 	}
 
+
+	/***************ARRAYS MENUS*****************/
 	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Sortir"};
 	String[] menuGestioCiclistes = {"Inscriure","Llistar","Tornar"};
 	String[] menuCompeticio = {"Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
+
+	/*****************ARRAYS COLUMNES**************************/
+	String[] columnesEquip = {"Codi equip", "Nom"};
+	String[] columnesEtapes = {"Num. Etapa", "Població Inici","Població Final", "Tipus terreny"};
+	String[] columnesCiclistes = {"DNI","Nom","Data de naixement","Codi Equip","Dorsal"};
 }

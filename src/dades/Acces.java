@@ -68,6 +68,15 @@ public class Acces {
 		return dades.membres_equip.length;
 	}
 
+	public String[][] getEquips(Informacio dades){
+		return dades.equips;
+	}
+	public String[][] getEtapes(Informacio dades){
+		return dades.etapes;
+	}
+	public String[][] getCiclistes(Informacio dades){
+		return dades.Ciclistes;
+	}
 	public int numEquip(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLength(dades);i++){
 			if(getEquips(dades,i,0).equalsIgnoreCase(text)){
@@ -93,22 +102,15 @@ public class Acces {
 		return -1;
 	}
 
-	public void inscripcioCiclista(Informacio dades,String[] arrayDades){
-		int numEquip = Integer.parseInt(arrayDades[4]);
-		int numCiclista = Integer.parseInt(arrayDades[6]);
-		int posicio = ((numEquip) * dades.MAX_X_EQUIP) + (numCiclista);	//Determinem la posició del Ciclista a la Array
-		/*Afegim dni*/
-		setCiclistes(dades,arrayDades[0],posicio,0);
-		/*Afegim nom*/
-		setCiclistes(dades,arrayDades[1],posicio,1);
-		/*Afegim Data Naixement*/
-		setCiclistes(dades,arrayDades[2],posicio,2);
-		/*Afegim Dorsal*/
-		setCiclistes(dades,arrayDades[3],posicio,3);
-		/*Afegim Equip*/
-		setCiclistes(dades,arrayDades[5],posicio,4);
-		/*Sumem +1 als membres del equip*/
-		setMembresEquip(dades,numEquip,(getMembresEquip(dades,numEquip)+1));
+	public void inscripcioCiclista(Informacio dades, String nom, String dni, String dataNaixement, String equip, String dorsal){
+		int posicioArray = (numEquip(dades,equip) * dades.MAX_X_EQUIP) + (Integer.parseInt(dorsal.charAt(3)+"")-1);	//Posició del ciclista a la array
+
+		/***************INSERIM DADES A LA ARRAY*****************/
+		setCiclistes(dades,dni,posicioArray,0);
+		setCiclistes(dades,nom,posicioArray,1);
+		setCiclistes(dades,dataNaixement,posicioArray,2);
+		setCiclistes(dades,equip,posicioArray,3);
+		setCiclistes(dades,dorsal,posicioArray,4);
 	}
 
 	public int numCiclistes(Informacio dades){
@@ -122,7 +124,7 @@ public class Acces {
 		return contador;
 	}
 
-	/* Funció que retorna el numero del ciclista, el seu nom, el seu DNI i el seu dorsal */
+	/** Funció que retorna el numero del ciclista, el seu nom, el seu DNI i el seu dorsal */
 	public String ciclistes_toString(Informacio dades){
 		String ciclistes = "";
 		int n_ciclista = 1;
@@ -141,6 +143,4 @@ public class Acces {
 		}
 		return ciclistes;
 	}
-
-
 }
