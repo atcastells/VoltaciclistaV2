@@ -89,8 +89,8 @@ public class Principal {
 
 								break;
 							case 2:
-								if(acces.numCiclistes(dades) > 0) {
-									gui.funcioTaula(columnesEquip,acces.ciclistes_toString(dades));
+								if(acces.numCiclistes(dades) >= 0) {
+									gui.funcioTaula(columnesEtapes,acces.getEtapes(dades));
 											imprimirTemps();
 								}
 								else{
