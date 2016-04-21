@@ -129,18 +129,16 @@ public class Acces {
 
 	/** Funció que retorna el numero del ciclista, el seu nom, el seu DNI i el seu dorsal */
 	public String[][] ciclistes_toString(Informacio dades) {
-		int n_ciclista = 0;
 		int contador = 0; //Contador on inscriure els ciclistes a la array local
 
 		String ciclistes[][] = new String[numCiclistes(dades)][4];
 
 		for (int i = 0; i < getCiclistesLength(dades) && contador <= numCiclistes(dades); i++) {
 			if (getCiclistes(dades, i, 0) != null) {
-				ciclistes[contador][0] = n_ciclista + "";
+				ciclistes[contador][0] = i + "";
 				ciclistes[contador][1] = getCiclistes(dades, i, 0);
 				ciclistes[contador][2] = getCiclistes(dades, i, 1);
 				ciclistes[contador][3] = getCiclistes(dades, i, 4);
-				n_ciclista++;
 				contador++;
 			}
 
