@@ -140,13 +140,16 @@ public class Acces {
 				ciclistes[contador][3] = getCiclistes(dades, i, 4);
 				contador++;
 			}
-
 		}
-
-		for(int i = 0; i < ciclistes.length;i++){
-			System.out.print(ciclistes[i][1]+"\n");
-		}
-
 		return ciclistes;
+	}
+
+	/***************INIT**************************/
+	public void initTempsEtapa(Informacio dades){
+		for(int i = 0; i < getCiclistesLength(dades);i++){
+			for(int j = 0; j < getEtapes(dades).length;j++){
+				setTempsEtapes(dades,0,i,j);
+			}
+		}
 	}
 }
