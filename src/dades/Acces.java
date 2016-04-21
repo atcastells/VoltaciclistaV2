@@ -129,19 +129,21 @@ public class Acces {
 		int n_ciclista = 1;
 		String ciclistes [][] = new String[numCiclistes(dades)][4];
 		System.out.println(ciclistes.length + "\n");
-		for(int i = 0; i < ciclistes.length; i++) {
-			for (int j=0; j<getCiclistesLength(dades); j++){
-				if (getCiclistes(dades, i, 0) != null) {
-					System.out.println(i);
-					ciclistes[i][0] = n_ciclista+"";
-					ciclistes[i][1] = getCiclistes(dades,j,0);
-					ciclistes[i][2] = getCiclistes(dades,j,1);
-					ciclistes[i][3] = getCiclistes(dades,j,3);
+
+		boolean acces = false;
+		for (int i = 0;i < getCiclistesLength(dades);i++){
+			if (getCiclistes(dades, i, 0) != null) {
+				acces = true;
+				for(int j = 0; j < ciclistes.length & acces;j++){
+					System.out.println(j+"\t"+i+"\n");
+					ciclistes[j][0] = n_ciclista+"";
+					ciclistes[j][1] = getCiclistes(dades,i,0);
+					ciclistes[j][2] = getCiclistes(dades,i,1);
+					ciclistes[j][3] = getCiclistes(dades,i,3);
 					n_ciclista++;
-					System.out.println(i);
+					acces = false;
 				}
 			}
-
 		}
 		return ciclistes;
 	}
