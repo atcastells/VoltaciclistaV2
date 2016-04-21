@@ -5,7 +5,7 @@
 ##  Menu Principal
 
 1. [Gestió de ciclistes](#gestioCiclistes)
-    1. Inscriure
+    1. [Inscriure](#inscriure)
     2.  Llistar
 2. Gestió de la competició.
     1. Enregistrar temps.
@@ -53,3 +53,59 @@
 ## Codi Font
 
 ### <a name="gestioCiclistes">Gestió Ciclistes
+#### <a name="Inscriure">Inscriure
+##### Principal (Menu)
+```java
+    //Declaració de variables
+    String equip = "";
+    String dni = "";
+    String dataNaixement = "";
+    String nom = "";
+    String dorsal = "";
+    
+    //Equip Existeix
+    equip = comprovacioEquip(acces,gui,dades);
+    //DNI Existeix
+    dni = comprovacioDNI(acces,gui,dades);
+    //Data Naixement
+    dataNaixement = gui.funcioData();
+    //Nom
+    gui.imprimir("Escriu el nom del ciclista: ");
+    nom = gui.readString();
+    gui.ln();
+    //Dorsal
+    dorsal = gui.funcioDorsal(nom,acces.membresEquip(dades,acces.numEquip(dades,equip)),equip);
+    //Enviem les dades per inserir
+    acces.inscripcioCiclista(dades,nom,dni,dataNaixement,equip,dorsal);
+```
+##### Principal (Funcions Auxiliars)
+```java
+	String comprovacioEquip(Acces acces, Biblioteca gui,Informacio dades){
+		String equip = "";
+		boolean ajuda = false;
+		do{
+			if(ajuda){
+				gui.imprimir("Aquests son els equips disponibles.\n");
+				gui.ln();
+					gui.funcioTaula(columnesEquip,acces.getEquips(dades));
+			}
+			gui.imprimir("Escriu el codi del equip: ");
+			equip = gui.readString();
+			ajuda = true;
+			gui.ln();
+		}
+		while ((acces.numEquip(dades,equip) <0));
+		return equip;
+	}
+	
+	String comprovacioDNI(Acces acces,Biblioteca gui,Informacio dades){
+		String dni = "";
+		do{
+			gui.imprimir("Escriu el DNI del ciclista: ");
+			dni = gui.readString();
+			gui.ln();
+		}
+		while (!(acces.dniExistent(dades,dni) == -1));
+		return dni;
+	}
+```
