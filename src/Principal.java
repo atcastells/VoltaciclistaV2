@@ -187,7 +187,7 @@ public class Principal {
         //Inserim el temps dels ciclistes
         for (int i = 0; i < ciclistes.length; i++){
             posicioCiclista = Integer.parseInt(ciclistes[i][0]);
-            gui.imprimir("Insereix el temps (En segons) per al ciclista "+ciclistes[i][2]+" amb dorsal "+ciclistes[i][3]+": ");
+            gui.imprimir("Insereix el temps (En segons) per al ciclista "+ciclistes[i][2]+" amb dorsal "+ciclistes[i][3]+" : ");
             temps = gui.readInt("");
             acces.setTempsEtapes(dades,temps,posicioCiclista,etapa);
             gui.ln();
@@ -220,9 +220,10 @@ public class Principal {
         return informacio;
     }
 	/***************ARRAYS MENUS*****************/
-	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Carregar dades","Sortir"};
+	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Utilitats","Sortir"};
 	String[] menuGestioCiclistes = {"Inscriure","Llistar","Tornar"};
 	String[] menuCompeticio = {"Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
+	String[] menuUtilitats = {"Carregar dades","Buidar llista"};
 
 	/*****************ARRAYS COLUMNES**************************/
     String[] inscrits = {"Num. de Ciclistes inscrits","Num. de equips inscrits","Max. ciclistes per equip"};
@@ -232,13 +233,21 @@ public class Principal {
 
 	/*****************FUNCIONS DE PROVA**************************/
 	void inserirCiclistes(Informacio dades, Acces acces,Biblioteca gui){
-		String[][]dadesCiclistes = {
-				{"Aaron","47822563C","20/02/1989","ONZ"},
-				{"Jose","47822563Z","20/03/1989","BIC"},
-				{"Ruben","47822563Y","20/04/1989","FON"},
-				{"Josep","47822563Z","20/05/1989","TNK"},
-				{"Oscar","47822563A","21/02/1989","MTX"},
-				{"Jesus","45822563C","20/11/1989","MVX"}};
+		String[][]dadesCiclistes = new String[acces.getCiclistesLength(dades)][5];
+		gui.imprimir(dadesCiclistes.length+"\n");
+		int numEquip = 0;
+		int numCiclistes = 0;
+			for(int j = 0; j < acces.getEquipsLength(dades);j++){
+				for(int k = 0; k < 5;k++){
+					dadesCiclistes[(numEquip*5)+numCiclistes][0] = "Ciclista"+acces.getEquips(dades,numEquip,0)+k;
+					dadesCiclistes[(numEquip*5)+numCiclistes][1] = (j*k+k)+j+k+"5434C";
+					dadesCiclistes[(numEquip*5)+numCiclistes][2] = "01/01/1989";
+					dadesCiclistes[(numEquip*5)+numCiclistes][3] = acces.getEquips(dades,j,0);
+					numCiclistes++;
+				}
+				numEquip++;
+				numCiclistes = 0;
+			}
 		for(int i = 0; i < dadesCiclistes.length;i++){
 			String nom = dadesCiclistes[i][0];
 			String dni = dadesCiclistes[i][1];
