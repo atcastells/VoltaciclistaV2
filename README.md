@@ -34,11 +34,12 @@
     * Seleccionar Etapa
         * Mostrar taula de temps (HH:MM:SS) amb els Ciclistes
 9. Crear funció per inserir dades de mostra
-    1. ~~Test Inserir~~
-        * Completar funció per inserir els 45 ciclistes
+    1. ~~Test Inserir~~********
+        * ~~Completar funció per inserir els 45 ciclistes~~
     2. Test Afegir Temps
 10. Crear funció enterPerContinuar a la biblioteca
 11. Crear funció tempsEtapesToString
+    * 
 
     
 ## CHANGELOG (20/04/16)

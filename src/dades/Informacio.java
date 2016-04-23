@@ -56,5 +56,6 @@ public class Informacio {
 	/* Array que guarda el nº de membres que te cada equip */
 	protected int [] membres_equip = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+
 }
 
