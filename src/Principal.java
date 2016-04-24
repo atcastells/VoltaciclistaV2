@@ -24,23 +24,28 @@ public class Principal {
 		Acces acces = new Acces();
 		Informacio dades = new Informacio();
         /*Iniciem la array de temps amb valors per defecte*/
-        acces.initTempsEtapa(dades);
+		acces.initTempsEtapa(dades);
 		/*Cridem al menú*/
 		int controlMenu = 0;
 		while (controlMenu < menu.length){
-            gui.ln();
-            gui.funcioTaula(inscrits,informacioInscrits(acces,dades));
-            gui.ln();
-		int controlMenuCiclistes = 0;
-		int controlMenuCompeticio = 0;
-            gui.ln();
+			gui.ln();
+			gui.funcioTaula(inscrits,informacioInscrits(acces,dades));
+			gui.ln();
+			int controlMenuCiclistes = 0;
+			int controlMenuCompeticio = 0;
+			int controlMenuUtilitats = 0;
+			gui.imprimir("##########\tMENÚ PRINCIPAL, SELECCIONA UNA OPCIÓ.\t##########");
+			gui.ln();gui.ln();
 			gui.imprimir(gui.funcioMenu(menu));
 			controlMenu = gui.readInt("Introdueix una opció del menú: ");
+			gui.ln();gui.ln();
 			switch (controlMenu){
 				case 1:
 					while (controlMenuCiclistes < menuGestioCiclistes.length){
+						gui.imprimir("##########\tGESTIÓ DE CICLISTES.\t##########");
+						gui.ln();gui.ln();
 						gui.imprimir(gui.funcioMenu(menuGestioCiclistes));
-                        controlMenuCiclistes = 0;
+						controlMenuCiclistes = 0;
 						controlMenuCiclistes = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCiclistes){
 							case 1:
@@ -50,21 +55,36 @@ public class Principal {
 								String dataNaixement = "";
 								String nom = "";
 								String dorsal = "";
-								
-								//Equip Existeix
-								equip = comprovacioEquip(acces,gui,dades);
-								//DNI Existeix
-								dni = comprovacioDNI(acces,gui,dades);
-								//Data Naixement
-								dataNaixement = gui.funcioData();
-								//Nom
-								gui.imprimir("Escriu el nom del ciclista: ");
-								nom = gui.readString();
-								gui.ln();
-								//Dorsal
-								dorsal = gui.funcioDorsal(nom,acces.membresEquip(dades,acces.numEquip(dades,equip)),equip);
-								//Enviem les dades per inserir
-								acces.inscripcioCiclista(dades,nom,dni,dataNaixement,equip,dorsal);
+								boolean inscripcioTancada = acces.numCiclistes(dades) == acces.getEquipsLength(dades) * dades.MAX_X_EQUIP;
+
+								/*Si es pot inscriure mes ciclistes*/
+
+								if(!inscripcioTancada){
+									//Equip Existeix
+									equip = comprovacioEquip(acces,gui,dades);
+
+								/*Si el equip no està ple*/
+									if(acces.getMembresEquip(dades,acces.numEquip(dades,equip)) < dades.MAX_X_EQUIP){
+										//DNI Existeix
+										dni = comprovacioDNI(acces,gui,dades);
+										//Data Naixement
+										dataNaixement = gui.funcioData();
+										//Nom
+										gui.imprimir("Escriu el nom del ciclista: ");
+										nom = gui.readString();
+										gui.ln();
+										//Dorsal
+										dorsal = gui.funcioDorsal(nom,acces.membresEquip(dades,acces.numEquip(dades,equip)),equip);
+										//Enviem les dades per inserir
+										acces.inscripcioCiclista(dades,nom,dni,dataNaixement,equip,dorsal);
+									}
+									else {
+										gui.imprimir("El equip seleccionat està ple.\n");
+									}
+								}
+								else {
+									gui.imprimir("La inscripció a nous ciclistes està tancada.\n");
+								}
 								break;
 
 							case 2:
@@ -76,12 +96,15 @@ public class Principal {
 								}
 								break;
 						}
+						gui.enterContinue();
 					}
 					break;
 				case 2:
 					while (controlMenuCompeticio < menuCompeticio.length){
+						gui.imprimir("##########\tGESTIÓ DE LA COMPETICIÓ.\t##########");
+						gui.ln();gui.ln();
 						gui.imprimir(gui.funcioMenu(menuCompeticio));
-                        controlMenuCompeticio = 0;
+						controlMenuCompeticio = 0;
 						controlMenuCompeticio = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuCompeticio){
 							case 1:
@@ -96,7 +119,7 @@ public class Principal {
 									}
 									while (!(etapa < acces.getEtapes(dades).length && !(etapa < 0)));
                                     /*Passem a afegir el temps a cada jugador en la etapa seleccionada*/
-                                    afegirTemps(acces,dades,gui,etapa);
+									afegirTemps(acces,dades,gui,etapa);
 								}
 								else{
 									gui.imprimir("No hi han ciclistes inscrits\n");
@@ -112,37 +135,54 @@ public class Principal {
 								}
 								break;
 							case 3:
-									guanyadors();
+								guanyadors();
 								break;
 							case 4:
 								remuneracions();
 								break;
 						}
+						gui.enterContinue();
 					}
 					break;
 				case 3:
-					if(acces.numCiclistes(dades) == 0){
-						inserirCiclistes(dades,acces,gui);
-					}
-					else {
-						gui.imprimir("Aquesta funció eliminara les dades existents i inicialitzarà el programa amb dades aleatories, continuar?(Escriu Si per continuar): ");
-                        String continuar = "Si";
-                        String opcio = gui.readString();
-                        if (opcio.equalsIgnoreCase(continuar)){
-                            buidaLlista(acces,dades);
-                            inserirCiclistes(dades,acces,gui);
-                        }
-                        else {
-                            break;
-                        }
-						gui.ln();
-
+					while (controlMenuUtilitats < menuUtilitats.length){
+						gui.imprimir("##########\tUTILITATS.\t##########");
+						gui.ln();gui.ln();
+						gui.imprimir(gui.funcioMenu(menuUtilitats));
+						controlMenuUtilitats = 0;
+						controlMenuUtilitats = gui.readInt("Introdueix una opció del menú:  ");
+						switch (controlMenuUtilitats){
+							case 1:
+								if(acces.numCiclistes(dades) == 0){
+									inserirCiclistes(dades,acces,gui);
+								}
+								else {
+									gui.imprimir("Aquesta funció eliminara les dades existents i inicialitzarà el programa amb dades aleatories, continuar?(Escriu Si per continuar): ");
+									String continuar = "Si";
+									String opcio = gui.readString();
+									if (opcio.equalsIgnoreCase(continuar)){
+										buidaLlista(acces,dades);
+										inserirCiclistes(dades,acces,gui);
+									}
+									else {
+										break;
+									}
+								}
+								break;
+							case 2:
+								gui.imprimir("Aquesta funció eliminara les dades existents, continuar?(Escriu Si per continuar): ");
+								String continuar = "Si";
+								String opcio = gui.readString();
+								if (opcio.equalsIgnoreCase(continuar)){
+									buidaLlista(acces,dades);
+								}
+								break;
+						}
+						gui.enterContinue();
 					}
 					break;
 			}
 		}
-
-
 	}
 	/****************FUNCIONS AUXILIARS INSCRIPCIO***********************/
 
@@ -153,7 +193,7 @@ public class Principal {
 			if(ajuda){
 				gui.imprimir("Aquests son els equips disponibles.\n");
 				gui.ln();
-					gui.funcioTaula(columnesEquip,acces.getEquips(dades));
+				gui.funcioTaula(columnesEquip,acces.getEquips(dades));
 			}
 			gui.imprimir("Escriu el codi del equip: ");
 			equip = gui.readString();
@@ -163,7 +203,7 @@ public class Principal {
 		while ((acces.numEquip(dades,equip) <0));
 		return equip;
 	}
-	
+
 	String comprovacioDNI(Acces acces,Biblioteca gui,Informacio dades){
 		String dni = "";
 		do{
@@ -181,17 +221,17 @@ public class Principal {
 	void afegirTemps(Acces acces,Informacio dades,Biblioteca gui,int x){
 		//Declaració de variables
 		int etapa = x;
-        int temps = 0;
-        int posicioCiclista;
-        String[][] ciclistes = acces.ciclistes_toString(dades);
-        //Inserim el temps dels ciclistes
-        for (int i = 0; i < ciclistes.length; i++){
-            posicioCiclista = Integer.parseInt(ciclistes[i][0]);
-            gui.imprimir("Insereix el temps (En segons) per al ciclista "+ciclistes[i][2]+" amb dorsal "+ciclistes[i][3]+" : ");
-            temps = gui.readInt("");
-            acces.setTempsEtapes(dades,temps,posicioCiclista,etapa);
-            gui.ln();
-        }
+		int temps = 0;
+		int posicioCiclista;
+		String[][] ciclistes = acces.ciclistes_toString(dades);
+		//Inserim el temps dels ciclistes
+		for (int i = 0; i < ciclistes.length; i++){
+			posicioCiclista = Integer.parseInt(ciclistes[i][0]);
+			gui.imprimir("Insereix el temps (En segons) per al ciclista "+ciclistes[i][2]+" amb dorsal "+ciclistes[i][3]+" : ");
+			temps = gui.readInt("");
+			acces.setTempsEtapes(dades,temps,posicioCiclista,etapa);
+			gui.ln();
+		}
 		return;
 	}
 	void imprimirTemps(){
@@ -205,28 +245,28 @@ public class Principal {
 
 	}
 
-    /*******************FUNCIONS AUXILIARS********/
-    void buidaLlista(Acces acces,Informacio dades){
-        for(int i = 0; i < acces.getEquipsLength(dades);i++){
-            acces.setMembresEquip(dades,i,0);
-        }
-    }
+	/*******************FUNCIONS AUXILIARS********/
+	void buidaLlista(Acces acces,Informacio dades){
+		for(int i = 0; i < acces.getEquipsLength(dades);i++){
+			acces.setMembresEquip(dades,i,0);
+		}
+	}
 
-    String[][] informacioInscrits(Acces acces, Informacio dades){
-        String[][] informacio = new String[1][inscrits.length];
-        informacio[0][0] = acces.numCiclistes(dades)+"";
-        informacio[0][1] = acces.getEquipsLength(dades)+"";
-        informacio[0][2] = 5+"";
-        return informacio;
-    }
+	String[][] informacioInscrits(Acces acces, Informacio dades){
+		String[][] informacio = new String[1][inscrits.length];
+		informacio[0][0] = acces.numCiclistes(dades)+"";
+		informacio[0][1] = acces.getEquipsLength(dades)+"";
+		informacio[0][2] = 5+"";
+		return informacio;
+	}
 	/***************ARRAYS MENUS*****************/
 	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Utilitats","Sortir"};
 	String[] menuGestioCiclistes = {"Inscriure","Llistar","Tornar"};
 	String[] menuCompeticio = {"Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
-	String[] menuUtilitats = {"Carregar dades","Buidar llista"};
+	String[] menuUtilitats = {"Carregar dades","Buidar llista","Tornar"};
 
 	/*****************ARRAYS COLUMNES**************************/
-    String[] inscrits = {"Num. de Ciclistes inscrits","Num. de equips inscrits","Max. ciclistes per equip"};
+	String[] inscrits = {"Num. de Ciclistes inscrits","Num. de equips inscrits","Max. ciclistes per equip"};
 	String[] columnesEquip = {"Codi equip", "Nom"};
 	String[] columnesEtapes = {"Num. Etapa", "Població Inici","Població Final", "Tipus terreny"};
 	String[] columnesCiclistes = {"Nº ciclista","DNI","Nom","Dorsal"};
@@ -237,17 +277,17 @@ public class Principal {
 		gui.imprimir(dadesCiclistes.length+"\n");
 		int numEquip = 0;
 		int numCiclistes = 0;
-			for(int j = 0; j < acces.getEquipsLength(dades);j++){
-				for(int k = 0; k < 5;k++){
-					dadesCiclistes[(numEquip*5)+numCiclistes][0] = "Ciclista"+acces.getEquips(dades,numEquip,0)+k;
-					dadesCiclistes[(numEquip*5)+numCiclistes][1] = (j*k+k)+j+k+"5434C";
-					dadesCiclistes[(numEquip*5)+numCiclistes][2] = "01/01/1989";
-					dadesCiclistes[(numEquip*5)+numCiclistes][3] = acces.getEquips(dades,j,0);
-					numCiclistes++;
-				}
-				numEquip++;
-				numCiclistes = 0;
+		for(int j = 0; j < acces.getEquipsLength(dades);j++){
+			for(int k = 0; k < 5;k++){
+				dadesCiclistes[(numEquip*5)+numCiclistes][0] = "Ciclista"+acces.getEquips(dades,numEquip,0)+k;
+				dadesCiclistes[(numEquip*5)+numCiclistes][1] = (j*k+k)+j+k+"5434C";
+				dadesCiclistes[(numEquip*5)+numCiclistes][2] = "01/01/1989";
+				dadesCiclistes[(numEquip*5)+numCiclistes][3] = acces.getEquips(dades,j,0);
+				numCiclistes++;
 			}
+			numEquip++;
+			numCiclistes = 0;
+		}
 		for(int i = 0; i < dadesCiclistes.length;i++){
 			String nom = dadesCiclistes[i][0];
 			String dni = dadesCiclistes[i][1];
