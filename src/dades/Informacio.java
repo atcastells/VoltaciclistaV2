@@ -2,7 +2,7 @@ package dades;
 public class Informacio {
 
 	/* Constant que indica el numero maxim de membres per equips */
-	protected final int MAX_X_EQUIP = 5;
+	public final int MAX_X_EQUIP = 5;
 	/* Array que guarda el codi i nom de cada equip */
 	protected String[][] equips = {
 			{"ONZ", "ONZE"}

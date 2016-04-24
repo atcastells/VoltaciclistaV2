@@ -91,7 +91,12 @@ public class Biblioteca {
 		}
 
 	}
-
+	void enterContinue(){
+		Scanner sc = new Scanner(System.in);
+		imprimir("Prem enter per continuar.");
+		ln();
+		sc.nextLine();
+	}
 	void ln(){
 	imprimir("\n");
 	};

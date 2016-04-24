@@ -19,8 +19,8 @@
     5. Llista de remuneracións a abonar a cada ciclista.
 
 ## TODO
-1. Error equip ple.
-    * Testejar
+1. ~~Error equip ple.~~
+    * ~~Testejar~~
 3. Funcio comprobar dni a BOOLEAN.
 4. ~~Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).~~
 5. ~~Crear funció per crear una taula amb les dades ordenades que se li envien.~~
@@ -37,9 +37,9 @@
     1. ~~Test Inserir~~********
         * ~~Completar funció per inserir els 45 ciclistes~~
     2. Test Afegir Temps
-10. Crear funció enterPerContinuar a la biblioteca
+10. ~~Crear funció enterPerContinuar a la biblioteca~~
 11. Crear funció tempsEtapesToString
-    * 
+    * Imprimeix Nom del  ciclista + els seus temps a les etapes  per cada fila
 
     
 ## CHANGELOG (20/04/16)
