@@ -28,15 +28,16 @@ public class Biblioteca {
 		}
 	}
 
-	int checkInt(int x) {
+	int checkInt(String x) {
+		int temps = 0;
 		try {
-			return x;
-		} catch (InputMismatchException e) {
+			temps = Integer.parseInt(x);
+		} catch (NumberFormatException e) {
 			imprimir("Error d'entrada, introdueix una xifra!:");
 			readInt();
 			ln();
 		}
-		return -1;
+		return temps;
 	}
 	String readString() {
 		Scanner sc = new Scanner(System.in);
@@ -165,5 +166,15 @@ public class Biblioteca {
 		}
 		/**Imprimim la taula*/
 		imprimir(taula);
+	}
+
+	String tempsToString(int segons){
+		String temps = "";
+		int hores = segons/3600;
+		segons = segons%3600;
+		int minuts = segons/60;
+		segons = segons%60;
+		temps = hores+"h. "+minuts+"m. "+segons+"s." ;
+		return temps;
 	}
 }

@@ -39,22 +39,7 @@
     2. Informe detallat per cada etapa.
     3. Informe de guanyadors (Mirar enunciat)
     4. Llistat de remuneracions a cada ciclista (Ordenat de mes a menys).
-
-    
-## CHANGELOG (20/04/16)
-* Funció creació de taules
-* Finalització Inserció
-
-## CHANGELOG (21/04/16)
-* Creació array de Ciclistes per a taula
-* Fixes
-    * Funció taula
-    * Aumentar contador ciclistes
-* Arreglat numCiclistes
-    * Retornava 1 si habien 0 ciclistes
-    
-    
-    
+        
 ## Codi Font
 
 ### <a name="gestioCiclistes">Gestió Ciclistes

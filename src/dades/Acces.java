@@ -158,6 +158,7 @@ public class Acces {
 		}
 	}
 	public String[][] mostrarTempsEtapes (Informacio dades){
+
 		String etapes[][] = new String[numCiclistes(dades)][getEtapes(dades).length+1];	//Etapes +1 per a posar el nom
 		for(int i = 0; i<numCiclistes(dades);i++){	//Per cada ciclista
 			if (getCiclistes(dades, i, 0) != null) {
@@ -180,5 +181,37 @@ public class Acces {
 			}
 		}
 		return etapes;
+	}
+	public String[][] tempsCiclista(int x,String[][] temps){
+		String[][] tempsCiclista = new String[1][temps[1].length];
+		for(int i = 0;i < temps[1].length;i++){
+			tempsCiclista[0][i] = temps[x][i];
+		}
+		return tempsCiclista;
+	}
+
+	public int mitjaTemps(Informacio dades, int x){
+		int mitja = 0;
+		int max = getEtapes(dades).length;
+		for (int i = 0; i < max;i++){
+			mitja += getTempsEtapes(dades,x,i);
+		}
+		return mitja/max;
+	}
+	public  int tempsTotal(Informacio dades, int x){
+		int total = 0;
+		for(int i = 0; i < getEtapes(dades).length;i++){
+			total+=getTempsEtapes(dades,x,i);
+		}
+		return total;
+	}
+
+	/***INFORME ETAPES***/
+	String[][] informeEtapa(int x, Informacio dades){
+		String[][] informeEtapa = new String[numCiclistes(dades)][3];
+		for(int i = 0; i < informeEtapa.length;i++){
+
+		}
+		return informeEtapa;
 	}
 }
