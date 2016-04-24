@@ -118,8 +118,7 @@ public class Principal {
                             case 2: //Premis
                                 gui.funcioTaula(columnesPremis,acces.getPremis(dades));
                                 break;
-							case 3:
-								/*Declaració de variables*/
+							case 3: //Enregistrar Temps
 								int etapa = 0;
 								if(acces.numCiclistes(dades) > 0) {	//Si hi han ciclistes
                                      /*Seleccionem la etapa*/
@@ -146,25 +145,56 @@ public class Principal {
 								}
 								break;
 							case 5:
-                                while (controlMenuInformes < menuInformes.length){
-                                    gui.imprimir("##########\tINFORMES.\t##########");
-                                    gui.ln();gui.ln();
-                                    gui.imprimir(gui.funcioMenu(menuInformes));
-                                    controlMenuInformes = 0;
-                                    gui.imprimir("Introdueix una opció del menu: ");
-                                    controlMenuInformes = gui.readInt();
-                                    switch (controlMenuInformes){
-                                        case 1:
-                                            break;
-                                        case 2:
-                                            break;
-                                        case 3:
-                                            break;
+                                if(acces.numCiclistes(dades) > 0){
+                                    while (controlMenuInformes < menuInformes.length){
+                                        gui.imprimir("##########\tINFORMES.\t##########");
+                                        gui.ln();gui.ln();
+                                        gui.imprimir(gui.funcioMenu(menuInformes));
+                                        controlMenuInformes = 0;
+                                        gui.imprimir("Introdueix una opció del menu: ");
+                                        controlMenuInformes = gui.readInt();
+                                        switch (controlMenuInformes){
+                                            case 1: //Informe Ciclista
+                                                int ciclista = 0;
+                                                int temps = 0;
+                                                gui.funcioTaula(columnesCiclistes,acces.ciclistes_toString(dades));
+                                                gui.imprimir("Selecciona un Ciclista: ");
+                                                ciclista = gui.readInt();
+                                                gui.ln();
+                                                gui.funcioTaula(columnesMostrarEtapes,acces.tempsCiclista(ciclista,acces.mostrarTempsEtapes(dades)));
+                                                gui.ln();
+                                                gui.imprimir("Temps total: ");
+                                                temps = acces.tempsTotal(dades,ciclista);
+                                                gui.imprimir(gui.tempsToString(temps)+"\n");
+                                                gui.imprimir("Mitja de temps per etapa: ");
+                                                temps = acces.mitjaTemps(dades,ciclista);
+                                                gui.imprimir(gui.tempsToString(temps)+"\n");
+                                                gui.ln();
+                                                break;
+                                            case 2: //Informe Etapa
+                                                int etapaInforme = 0;
+                                                gui.funcioTaula(columnesEtapes,acces.getEtapes(dades));
+                                                gui.imprimir("Selecciona una etapa: ");
+                                                etapa = gui.readInt();
+                                                break;
+                                            case 3: //Guanyadors
+                                                break;
+                                        }
+                                        gui.enterContinue();
                                     }
                                 }
+                                else {
+                                    gui.imprimir("No hi han ciclistes inscrits\n");
+                                }
+
 								break;
 							case 6:
-								remuneracions();
+                                if(acces.numCiclistes(dades) > 0){
+                                    remuneracions();
+                                }
+                                else {
+                                    gui.imprimir("No hi han ciclistes inscrits\n");
+                                }
 								break;
 						}
 						gui.enterContinue();
@@ -255,7 +285,7 @@ public class Principal {
 				break;
 			}
 			else {
-				temps = gui.checkInt(Integer.parseInt(sortida));
+				temps = gui.checkInt(sortida);
 			}
 			acces.setTempsEtapes(dades,temps,posicioCiclista,etapa);
 			gui.ln();
