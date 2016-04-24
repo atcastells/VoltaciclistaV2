@@ -206,7 +206,10 @@ public class Acces {
 		}
 		return total;
 	}
-
+	public  int tempsTotal(Informacio dades, int x, int y){
+		int total = getTempsEtapes(dades,x,y);
+		return total;
+	}
 	/***INFORME ETAPES***/
 	public String[][] informeEtapa(int x, Informacio dades){
 		String[][] informeEtapa = new String[numCiclistes(dades)][3];

@@ -189,7 +189,51 @@ public class Principal {
                                                 //Maillot Groc
                                                 int total = 0;
                                                 int ciclistaGuanyador = 0;
-                                                gui.imprimir("El guanyador del premi 'Maillot Groc' es:");
+                                                for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+                                                    if (acces.tempsTotal(dades,i) > total){
+                                                        total = acces.tempsTotal(dades,i);
+                                                        ciclistaGuanyador = i;
+                                                    }
+                                                }
+                                                gui.imprimir("El guanyador del premi 'Maillot Groc' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
+                                                total = 0;
+                                                //Maillot Verd
+                                                for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+                                                    for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                                                        if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Alta Muntanya")){
+                                                            if (acces.tempsTotal(dades,i,j) > total){
+                                                                total = acces.tempsTotal(dades,i,j);
+                                                                ciclistaGuanyador = i;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                gui.imprimir("El guanyador del premi 'Maillot Verd' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
+                                                total = 0;
+                                                //Maillot Blanc
+                                                for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+                                                    for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                                                        if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Muntanya")){
+                                                            if (acces.tempsTotal(dades,i,j) > total){
+                                                                total = acces.tempsTotal(dades,i,j);
+                                                                ciclistaGuanyador = i;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                gui.imprimir("El guanyador del premi 'Maillot Blanc' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
+                                                //Maillot Blau
+                                                for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+                                                    for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                                                        if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Plana")){
+                                                            if (acces.tempsTotal(dades,i,j) > total){
+                                                                total = acces.tempsTotal(dades,i,j);
+                                                                ciclistaGuanyador = i;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                                gui.imprimir("El guanyador del premi 'Maillot Blau' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
                                                 break;
                                         }
                                         gui.enterContinue();
