@@ -295,21 +295,11 @@ public class Principal {
 
 	void emplenarTemps(Informacio dades, Acces acces,Biblioteca gui){
 		Random rd = new Random();
-		int min = rd.nextInt(3000);
-		int max = rd.nextInt(7000);
-		int segons = 0;
-		int minuts = 0;
-		int hores = 0;
-		//Min + (int)(Math.random() * ((Max - Min) + 1))
+		int min = (rd.nextInt(3000)+1)*2;
+		int max = (rd.nextInt(5000)+1)*2;
 		for(int i = 0;i < acces.getCiclistesLength(dades);i++){
 			for(int j = 0; j < acces.getEtapes(dades).length;j++){
-				acces.setTempsEtapes(dades,(min + rd.nextInt(5000) * (max - min)),i,j);
-				segons = acces.getTempsEtapes(dades,i,j);
-				hores = segons/3600;
-				segons = segons%3600;
-				minuts = segons/60;
-				/*gui.imprimir(acces.getTempsEtapes(dades,i,j)+"\n");
-				gui.imprimir(segons+"\t"+minuts+"\t"+hores+"\n");*/
+				acces.setTempsEtapes(dades,rd.nextInt((max - min) + 1)+min,i,j);
 			}
 		}
 	}
