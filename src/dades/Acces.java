@@ -91,15 +91,15 @@ public class Acces {
 		}
 		return -1;
 	}
-	public int dniExistent (Informacio dades, String text){
+	public boolean dniExistent (Informacio dades, String text){
 		for(int i = 0; i < getCiclistesLength(dades); i++){
 			if(getCiclistes(dades,i,0) != null){
 				if(getCiclistes(dades,i,0).equalsIgnoreCase(text)){
-					return i;
+					return true;
 				}
 			}
 		}
-		return -1;
+		return false;
 	}
 
 	public void inscripcioCiclista(Informacio dades, String nom, String dni, String dataNaixement, String equip, String dorsal){

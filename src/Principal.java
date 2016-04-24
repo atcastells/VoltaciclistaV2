@@ -211,7 +211,7 @@ public class Principal {
 			dni = gui.readString();
 			gui.ln();
 		}
-		while (!(acces.dniExistent(dades,dni) == -1));
+		while (!(acces.dniExistent(dades,dni) == false));
 		return dni;
 	}
 
