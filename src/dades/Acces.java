@@ -188,10 +188,11 @@ public class Acces {
 		}
 		return etapes;
 	}
-	public String[][] tempsCiclista(int x,String[][] temps){
-		String[][] tempsCiclista = new String[1][temps[1].length];
-		for(int i = 0;i < temps[1].length;i++){
-			tempsCiclista[0][i] = temps[x][i];
+	public String[][] tempsCiclista(Informacio dades,int x,String[][] temps){
+		int posicio = x;
+		String[][] tempsCiclista = new String[1][temps[0].length];
+		for(int i = 0;i < temps[0].length;i++){
+			tempsCiclista[0][i] = temps[posicio][i];
 		}
 		return tempsCiclista;
 	}
@@ -218,10 +219,13 @@ public class Acces {
 	/***INFORME ETAPES***/
 	public String[][] informeEtapa(int x, Informacio dades){
 		String[][] informeEtapa = new String[numCiclistes(dades)][3];
+		String[][] tempCiclistes = ciclistes_toString(dades);
+		int a = informeEtapa.length;
 		String[] temp = new String[3];
 		/*Omplim la array*/
 		for(int i = 0; i < informeEtapa.length;i++){
-			informeEtapa[i][1] = getCiclistes(dades,i,1);
+			informeEtapa[i][1] = tempCiclistes[i][2];
+			//informeEtapa[i][1] = getCiclistes(dades,i,1);
 			informeEtapa[i][2] = getTempsEtapes(dades,i,x)+"";
 		}
 		/*Ordenem la array*/

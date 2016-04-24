@@ -161,10 +161,19 @@ public class Principal {
                                                 int ciclista = 0;
                                                 int temps = 0;
                                                 gui.funcioTaula(columnesCiclistes,acces.ciclistes_toString(dades));
-                                                gui.imprimir("Selecciona un Ciclista: ");
-                                                ciclista = gui.readInt();
+                                                do{
+                                                    gui.imprimir("Selecciona un Ciclista: ");
+                                                    ciclista = gui.readInt();
+                                                    for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+                                                        if(Integer.parseInt(acces.ciclistes_toString(dades)[i][0]) == ciclista){
+                                                            ciclista = i;
+                                                            gui.imprimir(i+"\n");
+                                                        }
+                                                    }
+                                                }
+                                                while (ciclista >= acces.ciclistes_toString(dades).length || ciclista < 0);
                                                 gui.ln();
-                                                gui.funcioTaula(columnesMostrarEtapes,acces.tempsCiclista(ciclista,acces.mostrarTempsEtapes(dades)));
+                                                gui.funcioTaula(columnesMostrarEtapes,acces.tempsCiclista(dades,ciclista,acces.mostrarTempsEtapes(dades)));
                                                 gui.ln();
                                                 gui.imprimir("Temps total: ");
                                                 temps = acces.tempsTotal(dades,ciclista);
@@ -177,13 +186,15 @@ public class Principal {
                                             case 2: //Informe Etapa
                                                 int etapaInforme = 0;
                                                 gui.funcioTaula(columnesEtapes,acces.getEtapes(dades));
-                                                gui.imprimir("Selecciona una etapa: ");
-                                                etapa = gui.readInt();
+                                                do{
+                                                    gui.imprimir("Selecciona una etapa: ");
+                                                    etapa = gui.readInt();
+                                                }
+                                                while (etapa >= acces.getEtapesLength(dades) || etapa < 0);
                                                 gui.ln();
                                                 gui.imprimir("Creant informe de temps de la etapa nº "+etapa+". ("+acces.getEtapes(dades,etapa,1)+" - "+acces.getEtapes(dades,etapa,2)+").\n");
                                                 gui.enterContinue();
                                                 gui.funcioTaula(columnesInformeEtapa,acces.informeEtapa(etapa,dades));
-
                                                 break;
                                             case 3: //Guanyadors
                                                 guanyadors(acces,gui,dades);
@@ -191,6 +202,7 @@ public class Principal {
                                         }
                                         gui.enterContinue();
                                     }
+
                                 }
                                 else {
                                     gui.imprimir("No hi han ciclistes inscrits\n");
