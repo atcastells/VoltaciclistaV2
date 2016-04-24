@@ -117,7 +117,6 @@ public class Acces {
 		setCiclistes(dades,dataNaixement,posicioArray,2);
 		setCiclistes(dades,equip,posicioArray,3);
 		setCiclistes(dades,dorsal,posicioArray,4);
-		System.out.print("Ciclista inscrit\n");
 
 		/****************AUMENTEM EL Nº DE CICLISTES***********************/
 		setMembresEquip(dades,numEquip(dades,equip),getMembresEquip(dades,numEquip(dades,equip))+1);
