@@ -119,7 +119,7 @@ public class Principal {
                                 gui.funcioTaula(columnesPremis,acces.getPremis(dades));
                                 break;
 							case 3: //Enregistrar Temps
-								int etapa = 0;
+								int etapa = 1;
 								if(acces.numCiclistes(dades) > 0) {	//Si hi han ciclistes
                                      /*Seleccionem la etapa*/
 									do{
