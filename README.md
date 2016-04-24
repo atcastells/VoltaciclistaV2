@@ -37,7 +37,7 @@
     1. ~~Test Inserir~~********
         * ~~Completar funció per inserir els 45 ciclistes~~
     2. Test Afegir Temps
-10. ~~Crear funció enterPerContinuar a la biblioteca
+10. ~~Crear funció enterPerContinuar a la biblioteca~~
 11. Crear funció tempsEtapesToString
     * Imprimeix Nom del  ciclista + els seus temps a les etapes  per cada fila
 
