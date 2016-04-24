@@ -34,7 +34,7 @@ public class Informacio {
 	/* Array per a guardar les dades del premi que s'otorga al final de la competicio */
 	protected String dadesPremi[][]={{"Maillot groc","Tisset","General"},
 			{"Maillot blanc","Rolax","Muntanya"},
-			{"Maillotblau","Supermarx","Plana"},
+			{"Maillot blau","Supermarx","Plana"},
 			{"Maillot verd","BMV","Alta muntanya"}};
 
 	/* Array que guarda el import assignat a cada premi */

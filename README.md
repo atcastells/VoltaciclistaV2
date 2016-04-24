@@ -20,42 +20,26 @@
 
 ## TODO
 1. ~~Error equip ple.~~
-    * ~~Testejar~~
-3. Funcio comprobar dni a BOOLEAN.
+3. ~~Funcio comprobar dni a BOOLEAN.~~
 4. ~~Afegir control a funció dorsal per a noms curts (Si el nom es curt afegeix * al nom NOMES al dorsal).~~
 5. ~~Crear funció per crear una taula amb les dades ordenades que se li envien.~~
-6. Funció Ciclistes toString
-    * ~~Index ciclistes de la array original~~
+6. ~~Funció Ciclistes toString~~
 7. Crear funció per afegir temps
-    * Seleccionar Etapa
-        * Seleccionar Ciclista
-            * Afegir Temps (en segons)
-8. Crear funció per mostrar el temps de les etapes
-    * Seleccionar Etapa
-        * Mostrar taula de temps (HH:MM:SS) amb els Ciclistes
-9. Crear funció per inserir dades de mostra
-    1. ~~Test Inserir~~********
-        * ~~Completar funció per inserir els 45 ciclistes~~
-    2. Test Afegir Temps
+    * ~~Seleccionar Etapa~~
+        * ~~Afegir el temps a tots els ciclistes a la etapa corresponent (FET)~~
+            * ~~Afegir opció per sortir~~
+    * Seleccionar Ciclista
+        * Afegir Temps (en segons)
+8. ~~Crear funció per mostrar el temps de les etapes~~
+9. ~~Crear funció per inserir dades de mostra~~
 10. ~~Crear funció enterPerContinuar a la biblioteca~~
-11. Crear funció tempsEtapesToString
-    * Imprimeix Nom del  ciclista + els seus temps a les etapes  per cada fila
-
-    
-## CHANGELOG (20/04/16)
-* Funció creació de taules
-* Finalització Inserció
-
-## CHANGELOG (21/04/16)
-* Creació array de Ciclistes per a taula
-* Fixes
-    * Funció taula
-    * Aumentar contador ciclistes
-* Arreglat numCiclistes
-    * Retornava 1 si habien 0 ciclistes
-    
-    
-    
+11. ~~Crear funció tempsEtapesToString~~
+12. Crear Informes a partir del llistat de temps
+    1. Informe detallat per cada ciclista.
+    2. Informe detallat per cada etapa.
+    3. Informe de guanyadors (Mirar enunciat)
+    4. Llistat de remuneracions a cada ciclista (Ordenat de mes a menys).
+        
 ## Codi Font
 
 ### <a name="gestioCiclistes">Gestió Ciclistes

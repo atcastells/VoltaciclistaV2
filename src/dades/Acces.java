@@ -1,5 +1,7 @@
 package dades;
 
+import javax.sound.midi.MidiDevice;
+
 /**
  * Classe on s'accedeix desde el programa principal per interactuar amb la informació.
  */
@@ -77,6 +79,9 @@ public class Acces {
 	public String[][] getCiclistes(Informacio dades){
 		return dades.Ciclistes;
 	}
+	public String[][] getPremis(Informacio dades){
+		return  dades.dadesPremi;
+	}
 	public int numEquip(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLength(dades);i++){
 			if(getEquips(dades,i,0).equalsIgnoreCase(text)){
@@ -153,18 +158,60 @@ public class Acces {
 		}
 	}
 	public String[][] mostrarTempsEtapes (Informacio dades){
-		String etapes[][] = new String[numCiclistes(dades)+1][getEtapes(dades).length+1];
-		for (int i=1; i<getEtapes(dades).length+1; i++){
-			etapes[0][0] = "Ciclistes";
-			etapes[0][i] = getEtapes(dades,i,0);
-		}
-		for(int i = 0; i<numCiclistes(dades);i++){
+
+		String etapes[][] = new String[numCiclistes(dades)][getEtapes(dades).length+1];	//Etapes +1 per a posar el nom
+		for(int i = 0; i<numCiclistes(dades);i++){	//Per cada ciclista
 			if (getCiclistes(dades, i, 0) != null) {
-				for (int y = 0; y < getEtapes(dades).length; y++) {
-					etapes[i+1][y] = getTempsEtapes(dades,i,y) +"";
+				for (int z = 0; z< etapes[1].length; z++){	//Per cada etapa
+					int segons = 0;
+					int minuts = 0;
+					int hores = 0;
+					if(z == 0){
+						etapes[i][0] = getCiclistes(dades,i,1);
+					}
+					else {
+						segons = getTempsEtapes(dades,i,z-1);
+						hores = segons/3600;
+						segons = segons%3600;
+						minuts = segons/60;
+						segons = segons%60;
+						etapes[i][z] =  hores+"h. "+minuts+"m. "+segons+"s." ;
+					}
 				}
 			}
 		}
 		return etapes;
+	}
+	public String[][] tempsCiclista(int x,String[][] temps){
+		String[][] tempsCiclista = new String[1][temps[1].length];
+		for(int i = 0;i < temps[1].length;i++){
+			tempsCiclista[0][i] = temps[x][i];
+		}
+		return tempsCiclista;
+	}
+
+	public int mitjaTemps(Informacio dades, int x){
+		int mitja = 0;
+		int max = getEtapes(dades).length;
+		for (int i = 0; i < max;i++){
+			mitja += getTempsEtapes(dades,x,i);
+		}
+		return mitja/max;
+	}
+	public  int tempsTotal(Informacio dades, int x){
+		int total = 0;
+		for(int i = 0; i < getEtapes(dades).length;i++){
+			total+=getTempsEtapes(dades,x,i);
+		}
+		return total;
+	}
+
+	/***INFORME ETAPES***/
+	String[][] informeEtapa(int x, Informacio dades){
+		String[][] informeEtapa = new String[numCiclistes(dades)][3];
+		for(int i = 0; i < informeEtapa.length;i++){
+
+		}
+		return informeEtapa;
 	}
 }

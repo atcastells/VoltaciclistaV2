@@ -18,15 +18,26 @@ public class Biblioteca {
 		}
 		return menu;
 	}
-	int readInt(String missatge) {
+	int readInt() {
 		Scanner sc = new Scanner(System.in);
 		try {
-			imprimir(missatge);
 			return sc.nextInt();
 		} catch (InputMismatchException e) {
 			imprimir("Error d'entrada, introdueix una xifra!\n");
-			return (readInt(missatge));
+			return (readInt());
 		}
+	}
+
+	int checkInt(String x) {
+		int temps = 0;
+		try {
+			temps = Integer.parseInt(x);
+		} catch (NumberFormatException e) {
+			imprimir("Error d'entrada, introdueix una xifra!:");
+			readInt();
+			ln();
+		}
+		return temps;
 	}
 	String readString() {
 		Scanner sc = new Scanner(System.in);
@@ -41,19 +52,22 @@ public class Biblioteca {
 		int anys;
 		/*Anys*/
 		do{
-			anys = readInt("Any: ");
+			imprimir("Any: ");
+			anys = readInt();
 			ln();
 		}
 		while (2016 - anys > 99 && 2016 - anys < 16);
 		/*Mesos*/
 		do{
-			mesos = readInt("Mes: ");
+			imprimir("Mes: ");
+			mesos = readInt();
 			ln();
 		}
 		while (mesos <= 0 && mesos > 12);
 		/*Dies*/
 		do{
-			dies = readInt("Dia: ");
+			imprimir("Dia: ");
+			dies = readInt();
 			ln();
 		}
 		while (dies > 31);
@@ -152,5 +166,15 @@ public class Biblioteca {
 		}
 		/**Imprimim la taula*/
 		imprimir(taula);
+	}
+
+	String tempsToString(int segons){
+		String temps = "";
+		int hores = segons/3600;
+		segons = segons%3600;
+		int minuts = segons/60;
+		segons = segons%60;
+		temps = hores+"h. "+minuts+"m. "+segons+"s." ;
+		return temps;
 	}
 }
