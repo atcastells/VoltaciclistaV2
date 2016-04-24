@@ -35,8 +35,8 @@
 10. ~~Crear funció enterPerContinuar a la biblioteca~~
 11. ~~Crear funció tempsEtapesToString~~
 12. Crear Informes a partir del llistat de temps
-    1. Informe detallat per cada ciclista.
-    2. Informe detallat per cada etapa.
+    1. ~~Informe detallat per cada ciclista.~~
+    2. ~~Informe detallat per cada etapa.~~
     3. Informe de guanyadors (Mirar enunciat)
     4. Llistat de remuneracions a cada ciclista (Ordenat de mes a menys).
         
