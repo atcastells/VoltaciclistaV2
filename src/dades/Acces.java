@@ -161,19 +161,19 @@ public class Acces {
 		}
 	}
 	public String[][] mostrarTempsEtapes (Informacio dades){
-	int test = ciclistes_toString(dades).length;
-		String etapes[][] = new String[ciclistes_toString(dades).length][(getEtapesLength(dades))+1];	//Etapes +1 per a posar el nom
-		int test2 = getEtapesLength(dades);
-		for(int i = 0; i<ciclistes_toString(dades).length;i++){	//Per cada ciclista
+		String[][] tempCiclistes = ciclistes_toString(dades);								//Variable temporal per agafar dades
+		String etapes[][] = new String[tempCiclistes.length][(getEtapesLength(dades))+1];	//Etapes +1 per a posar el nom
+
+		for(int i = 0; i<tempCiclistes.length;i++){	//Per cada ciclista
 				for (int z = 0; z< etapes[0].length; z++){	//Per cada etapa
 					int segons = 0;
 					int minuts = 0;
 					int hores = 0;
 					if(z == 0){
-						etapes[i][0] = ciclistes_toString(dades)[i][2];
+						etapes[i][0] = tempCiclistes[i][2];
 					}
 					else {
-						segons = getTempsEtapes(dades,i,z-1);
+						segons = getTempsEtapes(dades,Integer.parseInt(tempCiclistes[i][0]),z-1);
 						hores = segons/3600;
 						segons = segons%3600;
 						minuts = segons/60;
