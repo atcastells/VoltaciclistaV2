@@ -35,6 +35,7 @@ public class Principal {
 			int controlMenuCiclistes = 0;
 			int controlMenuCompeticio = 0;
 			int controlMenuUtilitats = 0;
+            int controlMenuInformes = 0;
 			gui.imprimir("##########\tMENÚ PRINCIPAL, SELECCIONA UNA OPCIÓ.\t##########");
 			gui.ln();gui.ln();
 			gui.imprimir(gui.funcioMenu(menu));
@@ -145,7 +146,22 @@ public class Principal {
 								}
 								break;
 							case 5:
-								guanyadors();
+                                while (controlMenuInformes < menuInformes.length){
+                                    gui.imprimir("##########\tINFORMES.\t##########");
+                                    gui.ln();gui.ln();
+                                    gui.imprimir(gui.funcioMenu(menuInformes));
+                                    controlMenuInformes = 0;
+                                    gui.imprimir("Introdueix una opció del menu: ");
+                                    controlMenuInformes = gui.readInt();
+                                    switch (controlMenuInformes){
+                                        case 1:
+                                            break;
+                                        case 2:
+                                            break;
+                                        case 3:
+                                            break;
+                                    }
+                                }
 								break;
 							case 6:
 								remuneracions();
@@ -271,8 +287,9 @@ public class Principal {
 	/***************ARRAYS MENUS*****************/
 	String[] menu = {"Gestió de inscripció de ciclistes","Gestió de la competició","Utilitats","Sortir"};
 	String[] menuGestioCiclistes = {"Inscriure","Llistar","Tornar"};
-	String[] menuCompeticio = {"Equips","Premis","Enregistrar temps","Temps etapes", "Informe de guanyadors", "Llistat de remuneracions","Tornar"};
+	String[] menuCompeticio = {"Llistar equips","Llistar premis","Enregistrar temps","Taula general de Temps", "Informes", "Llistat de remuneracions","Tornar"};
 	String[] menuUtilitats = {"Carregar dades","Buidar llista","Tornar"};
+    String[] menuInformes = {"Informe ciclista", "Informe etapa","Guanyadors","Sortir"};
 
 	/*****************ARRAYS COLUMNES**************************/
 	String[] inscrits = {"Num. de Ciclistes inscrits","Num. de equips inscrits","Max. ciclistes per equip"};
