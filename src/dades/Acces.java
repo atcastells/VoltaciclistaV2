@@ -153,14 +153,17 @@ public class Acces {
 		}
 	}
 	public String[][] mostrarTempsEtapes (Informacio dades){
-		String etapes[][] = new String[numCiclistes(dades)][getEtapes(dades).length];
-		for(int i = 0; i<numCiclistes(dades);i++){
+		String etapes[][] = new String[numCiclistes(dades)][getEtapes(dades).length+1];	//Etapes +1 per a posar el nom
+		int test = etapes[1].length;
+		for(int i = 0; i<numCiclistes(dades);i++){	//Per cada ciclista
 			if (getCiclistes(dades, i, 0) != null) {
-				for (int y = 0; y < getCiclistes(dades).length; y++) {
-					etapes[y][0] = getCiclistes(dades,i,y);
-				}
-				for (int z = 1; z<getEtapes(dades).length; z++){
-					etapes[z][getEtapes(dades).length] = getTempsEtapes(dades,z-1,getEtapes(dades).length) + "" ;
+				for (int z = 0; z< etapes[1].length; z++){	//Per cada etapa
+					if(z == 0){
+						etapes[i][0] = getCiclistes(dades,i,1);
+					}
+					else {
+						etapes[i][z] = getTempsEtapes(dades,i,z-1) + "" ;
+					}
 				}
 			}
 		}

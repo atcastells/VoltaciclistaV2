@@ -129,7 +129,7 @@ public class Principal {
 								break;
 							case 2:
 								if(acces.numCiclistes(dades) > 0) {
-									imprimirTemps();
+									gui.funcioTaula(columnesMostrarEtapes,acces.mostrarTempsEtapes(dades));
 								}
 								else{
 									gui.imprimir("No hi han ciclistes inscrits\n");
@@ -219,6 +219,7 @@ public class Principal {
 		int temps = 0;
 		int posicioCiclista;
 		String[][] ciclistes = acces.ciclistes_toString(dades);
+
 		//Inserim el temps dels ciclistes
 		for (int i = 0; i < ciclistes.length; i++){
 			posicioCiclista = Integer.parseInt(ciclistes[i][0]);
@@ -228,9 +229,6 @@ public class Principal {
 			gui.ln();
 		}
 		return;
-	}
-	void imprimirTemps(){
-
 	}
 
 	void guanyadors(){
@@ -296,8 +294,8 @@ public class Principal {
 
 	void emplenarTemps(Informacio dades, Acces acces,Biblioteca gui){
 		Random rd = new Random();
-		int min = (rd.nextInt(3000)+1)*2;
-		int max = (rd.nextInt(5000)+1)*2;
+		int min = 3000;
+		int max = 5000;
 		for(int i = 0;i < acces.getCiclistesLength(dades);i++){
 			for(int j = 0; j < acces.getEtapes(dades).length;j++){
 				acces.setTempsEtapes(dades,rd.nextInt((max - min) + 1)+min,i,j);
