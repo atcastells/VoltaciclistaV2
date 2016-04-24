@@ -1,5 +1,4 @@
 package dades;
-
 import javax.sound.midi.MidiDevice;
 
 /**
@@ -65,6 +64,9 @@ public class Acces {
 	public int getCiclistesLength(Informacio dades){
 		return dades.Ciclistes.length;
 	}
+	public int getEtapesLength(Informacio dades){
+		return dades.etapes.length;
+	}
 
 	public int getMembresLength (Informacio dades){
 		return dades.membres_equip.length;
@@ -115,6 +117,7 @@ public class Acces {
 		setCiclistes(dades,dataNaixement,posicioArray,2);
 		setCiclistes(dades,equip,posicioArray,3);
 		setCiclistes(dades,dorsal,posicioArray,4);
+		System.out.print("Ciclista inscrit\n");
 
 		/****************AUMENTEM EL Nº DE CICLISTES***********************/
 		setMembresEquip(dades,numEquip(dades,equip),getMembresEquip(dades,numEquip(dades,equip))+1);
@@ -158,16 +161,16 @@ public class Acces {
 		}
 	}
 	public String[][] mostrarTempsEtapes (Informacio dades){
-
-		String etapes[][] = new String[numCiclistes(dades)][getEtapes(dades).length+1];	//Etapes +1 per a posar el nom
-		for(int i = 0; i<numCiclistes(dades);i++){	//Per cada ciclista
-			if (getCiclistes(dades, i, 0) != null) {
-				for (int z = 0; z< etapes[1].length; z++){	//Per cada etapa
+	int test = ciclistes_toString(dades).length;
+		String etapes[][] = new String[ciclistes_toString(dades).length][(getEtapesLength(dades))+1];	//Etapes +1 per a posar el nom
+		int test2 = getEtapesLength(dades);
+		for(int i = 0; i<ciclistes_toString(dades).length;i++){	//Per cada ciclista
+				for (int z = 0; z< etapes[0].length; z++){	//Per cada etapa
 					int segons = 0;
 					int minuts = 0;
 					int hores = 0;
 					if(z == 0){
-						etapes[i][0] = getCiclistes(dades,i,1);
+						etapes[i][0] = ciclistes_toString(dades)[i][2];
 					}
 					else {
 						segons = getTempsEtapes(dades,i,z-1);
@@ -178,7 +181,6 @@ public class Acces {
 						etapes[i][z] =  hores+"h. "+minuts+"m. "+segons+"s." ;
 					}
 				}
-			}
 		}
 		return etapes;
 	}
@@ -207,11 +209,48 @@ public class Acces {
 	}
 
 	/***INFORME ETAPES***/
-	String[][] informeEtapa(int x, Informacio dades){
+	public String[][] informeEtapa(int x, Informacio dades){
 		String[][] informeEtapa = new String[numCiclistes(dades)][3];
+		String[] temp = new String[3];
+		/*Omplim la array*/
 		for(int i = 0; i < informeEtapa.length;i++){
+			informeEtapa[i][1] = getCiclistes(dades,i,1);
+			informeEtapa[i][2] = getTempsEtapes(dades,i,x)+"";
+		}
+		/*Ordenem la array*/
+		for(int i = 0;i < informeEtapa.length;i++){
+			for(int j = 0; j < informeEtapa.length;j++){
+				if(Integer.parseInt(informeEtapa[i][2]) < Integer.parseInt(informeEtapa[j][2])){
+					temp[1] = informeEtapa[i][1];
+					temp[2] = informeEtapa[i][2];
+					informeEtapa[i][1] = informeEtapa[j][1];
+					informeEtapa[i][2] = informeEtapa[j][2];
+					informeEtapa[j][1] = temp[1];
+					informeEtapa[j][2] = temp[2];
+					j--;
+				}
+			}
+		}
 
+		/*Escribim les posicions*/
+		for (int i = 0; i < informeEtapa.length;i++){
+			informeEtapa[i][0] = "#"+i;
+		}
+
+		/*Convertim el temps a HHMMSS*/
+		for (int i = 0; i < informeEtapa.length;i++){
+			informeEtapa[i][2] = tempsToString(Integer.parseInt(informeEtapa[i][2]));
 		}
 		return informeEtapa;
+	}
+
+	String tempsToString(int segons){
+		String temps = "";
+		int hores = segons/3600;
+		segons = segons%3600;
+		int minuts = segons/60;
+		segons = segons%60;
+		temps = hores+"h. "+minuts+"m. "+segons+"s." ;
+		return temps;
 	}
 }

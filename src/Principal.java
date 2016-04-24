@@ -49,7 +49,7 @@ public class Principal {
 						gui.ln();gui.ln();
 						gui.imprimir(gui.funcioMenu(menuGestioCiclistes));
 						controlMenuCiclistes = 0;
-
+                        gui.imprimir("Introdueix una opció del menú:  ");
 						controlMenuCiclistes = gui.readInt();
 						switch (controlMenuCiclistes){
 							case 1:
@@ -75,7 +75,10 @@ public class Principal {
 										dataNaixement = gui.funcioData();
 										//Nom
 										gui.imprimir("Escriu el nom del ciclista: ");
-										nom = gui.readString();
+										do{
+                                            nom = gui.readString();
+                                        }
+                                        while (nom.length() < 1);
 										gui.ln();
 										//Dorsal
 										dorsal = gui.funcioDorsal(nom,acces.membresEquip(dades,acces.numEquip(dades,equip)),equip);
@@ -176,8 +179,17 @@ public class Principal {
                                                 gui.funcioTaula(columnesEtapes,acces.getEtapes(dades));
                                                 gui.imprimir("Selecciona una etapa: ");
                                                 etapa = gui.readInt();
+                                                gui.ln();
+                                                gui.imprimir("Creant informe de temps de la etapa nº "+etapa+". ("+acces.getEtapes(dades,etapa,1)+" - "+acces.getEtapes(dades,etapa,2)+").\n");
+                                                gui.enterContinue();
+                                                gui.funcioTaula(columnesInformeEtapa,acces.informeEtapa(etapa,dades));
+
                                                 break;
                                             case 3: //Guanyadors
+                                                //Maillot Groc
+                                                int total = 0;
+                                                int ciclistaGuanyador = 0;
+                                                gui.imprimir("El guanyador del premi 'Maillot Groc' es:");
                                                 break;
                                         }
                                         gui.enterContinue();
@@ -328,6 +340,7 @@ public class Principal {
 	String[] columnesCiclistes = {"Nº ciclista","DNI","Nom","Dorsal"};
 	String[] columnesMostrarEtapes ={"Ciclistes", "Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"};
     String[] columnesPremis = {"Premi","Patrocinador","Tipus premi"};
+    String[] columnesInformeEtapa = {"Posició","Nom","Temps"};
 
 	/*****************FUNCIONS DE PROVA**************************/
 	void inserirCiclistes(Informacio dades, Acces acces,Biblioteca gui){
