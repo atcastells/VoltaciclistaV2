@@ -1,5 +1,7 @@
 package dades;
 
+import javax.sound.midi.MidiDevice;
+
 /**
  * Classe on s'accedeix desde el programa principal per interactuar amb la informació.
  */
@@ -76,6 +78,9 @@ public class Acces {
 	}
 	public String[][] getCiclistes(Informacio dades){
 		return dades.Ciclistes;
+	}
+	public String[][] getPremis(Informacio dades){
+		return  dades.dadesPremi;
 	}
 	public int numEquip(Informacio dades, String text){
 		for(int i = 0; i < getEquipsLength(dades);i++){
