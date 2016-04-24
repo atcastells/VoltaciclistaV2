@@ -67,7 +67,12 @@ public class Acces {
 	public int getEtapesLength(Informacio dades){
 		return dades.etapes.length;
 	}
-
+	public int getPremis(Informacio dades, int x){
+		return dades.premis[x];
+	}
+	public void setPremis(Informacio dades, int x, int y){
+		dades.premis[x] = y;
+	}
 	public int getMembresLength (Informacio dades){
 		return dades.membres_equip.length;
 	}

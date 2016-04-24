@@ -186,54 +186,7 @@ public class Principal {
 
                                                 break;
                                             case 3: //Guanyadors
-                                                //Maillot Groc
-                                                int total = 0;
-                                                int ciclistaGuanyador = 0;
-                                                for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
-                                                    if (acces.tempsTotal(dades,i) > total){
-                                                        total = acces.tempsTotal(dades,i);
-                                                        ciclistaGuanyador = i;
-                                                    }
-                                                }
-                                                gui.imprimir("El guanyador del premi 'Maillot Groc' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
-                                                total = 0;
-                                                //Maillot Verd
-                                                for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
-                                                    for(int j = 0; j < acces.getEtapesLength(dades);j++){
-                                                        if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Alta Muntanya")){
-                                                            if (acces.tempsTotal(dades,i,j) > total){
-                                                                total = acces.tempsTotal(dades,i,j);
-                                                                ciclistaGuanyador = i;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                gui.imprimir("El guanyador del premi 'Maillot Verd' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
-                                                total = 0;
-                                                //Maillot Blanc
-                                                for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
-                                                    for(int j = 0; j < acces.getEtapesLength(dades);j++){
-                                                        if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Muntanya")){
-                                                            if (acces.tempsTotal(dades,i,j) > total){
-                                                                total = acces.tempsTotal(dades,i,j);
-                                                                ciclistaGuanyador = i;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                gui.imprimir("El guanyador del premi 'Maillot Blanc' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
-                                                //Maillot Blau
-                                                for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
-                                                    for(int j = 0; j < acces.getEtapesLength(dades);j++){
-                                                        if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Plana")){
-                                                            if (acces.tempsTotal(dades,i,j) > total){
-                                                                total = acces.tempsTotal(dades,i,j);
-                                                                ciclistaGuanyador = i;
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                                gui.imprimir("El guanyador del premi 'Maillot Blau' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
+                                                guanyadors(acces,gui,dades);
                                                 break;
                                         }
                                         gui.enterContinue();
@@ -242,11 +195,11 @@ public class Principal {
                                 else {
                                     gui.imprimir("No hi han ciclistes inscrits\n");
                                 }
-
 								break;
 							case 6:
                                 if(acces.numCiclistes(dades) > 0){
-                                    remuneracions();
+                                    /*Remuneracions premis*/
+                                   gui.funcioTaula(columnesPremisCiclistes,remuneracions(acces,gui,dades));
                                 }
                                 else {
                                     gui.imprimir("No hi han ciclistes inscrits\n");
@@ -349,12 +302,150 @@ public class Principal {
 		return;
 	}
 
-	void guanyadors(){
-
+	void guanyadors(Acces acces,Biblioteca gui, Informacio dades){
+        int total = 0;
+        int ciclistaGuanyador = 0;
+        for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+            if (acces.tempsTotal(dades,i) > total){
+                total = acces.tempsTotal(dades,i);
+                ciclistaGuanyador = i;
+            }
+        }
+        gui.imprimir("El guanyador del premi 'Maillot Groc' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
+        total = 0;
+        //Maillot Verd
+        for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+            for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Alta Muntanya")){
+                    if (acces.tempsTotal(dades,i,j) > total){
+                        total = acces.tempsTotal(dades,i,j);
+                        ciclistaGuanyador = i;
+                    }
+                }
+            }
+        }
+        gui.imprimir("El guanyador del premi 'Maillot Verd' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
+        total = 0;
+        //Maillot Blanc
+        for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+            for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Muntanya")){
+                    if (acces.tempsTotal(dades,i,j) > total){
+                        total = acces.tempsTotal(dades,i,j);
+                        ciclistaGuanyador = i;
+                    }
+                }
+            }
+        }
+        gui.imprimir("El guanyador del premi 'Maillot Blanc' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
+        //Maillot Blau
+        for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+            for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Plana")){
+                    if (acces.tempsTotal(dades,i,j) > total){
+                        total = acces.tempsTotal(dades,i,j);
+                        ciclistaGuanyador = i;
+                    }
+                }
+            }
+        }
+        gui.imprimir("El guanyador del premi 'Maillot Blau' es: "+acces.ciclistes_toString(dades)[ciclistaGuanyador][2]+" amb un temps total de "+gui.tempsToString(total)+".\n");
 	}
-	void remuneracions(){
+	String[][] remuneracions(Acces acces,Biblioteca gui,Informacio dades){
 
+        /*Etapes*/
+        for(int h = 0; h < acces.ciclistes_toString(dades).length;h++){
+            for(int i = 0; i < acces.getEtapesLength(dades);i++){
+                if (!(acces.getTempsEtapes(dades,h,i) < 1)){
+                    acces.setPremis(dades,h,acces.getPremis(dades,h)+500);
+                }
+            }
+        }
+        /*Premis*/
+        /*Maillot Groc*/
+        int total = 0;
+        int ciclistaGuanyador = 0;
+        for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+            if (acces.tempsTotal(dades,i) > total){
+                total = acces.tempsTotal(dades,i);
+                ciclistaGuanyador = i;
+            }
+        }
+        acces.setPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[ciclistaGuanyador][0]),acces.getPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[ciclistaGuanyador][0]))+(int)acces.getImportPremi(dades,0));
+        ciclistaGuanyador = 0;
+        total = 0;
+        //Maillot Verd
+        for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+            for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Alta Muntanya")){
+                    if (acces.tempsTotal(dades,i,j) > total){
+                        total = acces.tempsTotal(dades,i,j);
+                        ciclistaGuanyador = i;
+                    }
+                }
+            }
+        }
+        acces.setPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[ciclistaGuanyador][0]),acces.getPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[ciclistaGuanyador][0]))+(int)acces.getImportPremi(dades,1));
+        ciclistaGuanyador = 0;
+        total = 0;
+        //Maillot Blanc
+        for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+            for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Muntanya")){
+                    if (acces.tempsTotal(dades,i,j) > total){
+                        total = acces.tempsTotal(dades,i,j);
+                        ciclistaGuanyador = i;
+                    }
+                }
+            }
+        }
+        acces.setPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[ciclistaGuanyador][0]),acces.getPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[ciclistaGuanyador][0]))+(int)acces.getImportPremi(dades,2));
+        ciclistaGuanyador = 0;
+        total = 0;
+        for(int i = 0; i < acces.ciclistes_toString(dades).length;i++){
+            for(int j = 0; j < acces.getEtapesLength(dades);j++){
+                if (acces.getEtapes(dades,j,3).equalsIgnoreCase("Plana")){
+                    if (acces.tempsTotal(dades,i,j) > total){
+                        total = acces.tempsTotal(dades,i,j);
+                        ciclistaGuanyador = i;
+                    }
+                }
+            }
+        }
+        acces.setPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[ciclistaGuanyador][0]),acces.getPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[ciclistaGuanyador][0]))+(int)acces.getImportPremi(dades,3));
+        ciclistaGuanyador = 0;
+        total = 0;
+        /*Creem la array on guardar les dades*/
+        String[][] remuneracionsCiclistes = new String[acces.ciclistes_toString(dades).length][3];
+        /*Emplenem la array*/
+        for(int i = 0; i < remuneracionsCiclistes.length;i++){
+            remuneracionsCiclistes[i][0] = acces.ciclistes_toString(dades)[i][2];
+            remuneracionsCiclistes[i][1] = acces.ciclistes_toString(dades)[i][3];
+            remuneracionsCiclistes[i][2] = acces.getPremis(dades,Integer.parseInt(acces.ciclistes_toString(dades)[i][0]))+"";
+        }
+
+        /*Ordenem la array*/
+        String[] temp = new String[3];
+
+        for(int i = 0;i < remuneracionsCiclistes.length;i++){
+            for(int j = 0; j < remuneracionsCiclistes.length;j++){
+                if(Integer.parseInt(remuneracionsCiclistes[i][2]) > Integer.parseInt(remuneracionsCiclistes[j][2])){
+                    temp[0] = remuneracionsCiclistes[i][0];
+                    temp[1] = remuneracionsCiclistes[i][1];
+                    temp[2] = remuneracionsCiclistes[i][2];
+                    remuneracionsCiclistes[i][0] = remuneracionsCiclistes[j][0];
+                    remuneracionsCiclistes[i][1] = remuneracionsCiclistes[j][1];
+                    remuneracionsCiclistes[i][2] = remuneracionsCiclistes[j][2];
+                    remuneracionsCiclistes[j][0] = temp[0];
+                    remuneracionsCiclistes[j][1] = temp[1];
+                    remuneracionsCiclistes[j][2] = temp[2];
+                    j--;
+                }
+            }
+        }
+        return remuneracionsCiclistes;
 	}
+
 
 	/*******************FUNCIONS AUXILIARS********/
 	void buidaLlista(Acces acces,Informacio dades){
@@ -385,8 +476,9 @@ public class Principal {
 	String[] columnesMostrarEtapes ={"Ciclistes", "Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"};
     String[] columnesPremis = {"Premi","Patrocinador","Tipus premi"};
     String[] columnesInformeEtapa = {"Posició","Nom","Temps"};
+    String[] columnesPremisCiclistes = {"Nom Ciclista", "Dorsal", "Import"};
 
-	/*****************FUNCIONS DE PROVA**************************/
+    /*****************FUNCIONS DE PROVA**************************/
 	void inserirCiclistes(Informacio dades, Acces acces,Biblioteca gui){
 		String[][]dadesCiclistes = new String[acces.getCiclistesLength(dades)][5];
 		int numEquip = 0;
