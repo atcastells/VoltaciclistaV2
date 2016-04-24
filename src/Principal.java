@@ -2,6 +2,7 @@ import dades.Acces;
 import dades.Informacio;
 
 import javax.sound.midi.MidiDevice;
+import java.util.Random;
 
 /**
  * Versio 0.1
@@ -153,28 +154,22 @@ public class Principal {
 						controlMenuUtilitats = gui.readInt("Introdueix una opció del menú:  ");
 						switch (controlMenuUtilitats){
 							case 1:
-								if(acces.numCiclistes(dades) == 0){
-									inserirCiclistes(dades,acces,gui);
-								}
-								else {
 									gui.imprimir("Aquesta funció eliminara les dades existents i inicialitzarà el programa amb dades aleatories, continuar?(Escriu Si per continuar): ");
 									String continuar = "Si";
 									String opcio = gui.readString();
 									if (opcio.equalsIgnoreCase(continuar)){
 										buidaLlista(acces,dades);
 										inserirCiclistes(dades,acces,gui);
+										emplenarTemps(dades,acces,gui);
 									}
-									else {
-										break;
-									}
-								}
 								break;
 							case 2:
 								gui.imprimir("Aquesta funció eliminara les dades existents, continuar?(Escriu Si per continuar): ");
-								String continuar = "Si";
-								String opcio = gui.readString();
+								continuar = "Si";
+								opcio = gui.readString();
 								if (opcio.equalsIgnoreCase(continuar)){
 									buidaLlista(acces,dades);
+									acces.initTempsEtapa(dades);
 								}
 								break;
 						}
@@ -274,7 +269,6 @@ public class Principal {
 	/*****************FUNCIONS DE PROVA**************************/
 	void inserirCiclistes(Informacio dades, Acces acces,Biblioteca gui){
 		String[][]dadesCiclistes = new String[acces.getCiclistesLength(dades)][5];
-		gui.imprimir(dadesCiclistes.length+"\n");
 		int numEquip = 0;
 		int numCiclistes = 0;
 		for(int j = 0; j < acces.getEquipsLength(dades);j++){
@@ -297,5 +291,16 @@ public class Principal {
 			acces.inscripcioCiclista(dades,nom,dni,dataNaixement,equip,dorsal);
 		}
 
+	}
+
+	void emplenarTemps(Informacio dades, Acces acces,Biblioteca gui){
+		Random rd = new Random();
+		int min = (rd.nextInt(3000)+1)*2;
+		int max = (rd.nextInt(5000)+1)*2;
+		for(int i = 0;i < acces.getCiclistesLength(dades);i++){
+			for(int j = 0; j < acces.getEtapes(dades).length;j++){
+				acces.setTempsEtapes(dades,rd.nextInt((max - min) + 1)+min,i,j);
+			}
+		}
 	}
 }
