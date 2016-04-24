@@ -265,6 +265,7 @@ public class Principal {
 	String[] columnesEquip = {"Codi equip", "Nom"};
 	String[] columnesEtapes = {"Num. Etapa", "Població Inici","Població Final", "Tipus terreny"};
 	String[] columnesCiclistes = {"Nº ciclista","DNI","Nom","Dorsal"};
+	String[] columnesMostrarEtapes ={"Ciclistes", "Etapa 1", "Etapa 2", "Etapa 3", "Etapa 4", "Etapa 5", "Etapa 6", "Etapa 7"};
 
 	/*****************FUNCIONS DE PROVA**************************/
 	void inserirCiclistes(Informacio dades, Acces acces,Biblioteca gui){
