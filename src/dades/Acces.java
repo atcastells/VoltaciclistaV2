@@ -154,15 +154,22 @@ public class Acces {
 	}
 	public String[][] mostrarTempsEtapes (Informacio dades){
 		String etapes[][] = new String[numCiclistes(dades)][getEtapes(dades).length+1];	//Etapes +1 per a posar el nom
-		int test = etapes[1].length;
 		for(int i = 0; i<numCiclistes(dades);i++){	//Per cada ciclista
 			if (getCiclistes(dades, i, 0) != null) {
 				for (int z = 0; z< etapes[1].length; z++){	//Per cada etapa
+					int segons = 0;
+					int minuts = 0;
+					int hores = 0;
 					if(z == 0){
 						etapes[i][0] = getCiclistes(dades,i,1);
 					}
 					else {
-						etapes[i][z] = getTempsEtapes(dades,i,z-1) + "" ;
+						segons = getTempsEtapes(dades,i,z-1);
+						hores = segons/3600;
+						segons = segons%3600;
+						minuts = segons/60;
+						segons = segons%60;
+						etapes[i][z] =  hores+"h. "+minuts+"m. "+segons+"s." ;
 					}
 				}
 			}
