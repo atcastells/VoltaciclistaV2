@@ -28,9 +28,11 @@
     * ~~Index ciclistes de la array original~~
 7. Crear funció per afegir temps
     * Seleccionar Etapa
-        * Seleccionar Ciclista
+        * Afegir el temps a tots els ciclistes a la etapa corresponent (FET)
+            * Afegir opció per sortir
+    * Seleccionar Ciclista
             * Afegir Temps (en segons)
-8. Crear funció per mostrar el temps de les etapes
+8. ~~Crear funció per mostrar el temps de les etapes~~
     * Seleccionar Etapa
         * Mostrar taula de temps (HH:MM:SS) amb els Ciclistes
 9. Crear funció per inserir dades de mostra
