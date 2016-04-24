@@ -156,8 +156,11 @@ public class Acces {
 		String etapes[][] = new String[numCiclistes(dades)][getEtapes(dades).length];
 		for(int i = 0; i<numCiclistes(dades);i++){
 			if (getCiclistes(dades, i, 0) != null) {
-				for (int y = 0; y < getEtapes(dades).length+1; y++) {
-					etapes[i][y] = getTempsEtapes(dades,i,y) +"";
+				for (int y = 0; y < getCiclistes(dades).length; y++) {
+					etapes[y][0] = getCiclistes(dades,i,y);
+				}
+				for (int z = 1; z<getEtapes(dades).length; z++){
+					etapes[z][getEtapes(dades).length] = getTempsEtapes(dades,z-1,getEtapes(dades).length) + "" ;
 				}
 			}
 		}
