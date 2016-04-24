@@ -152,4 +152,15 @@ public class Acces {
 			}
 		}
 	}
+	public int[][] mostrarTempsEtapes (Informacio dades){
+		int etapes[][] = new int[numCiclistes(dades)][getEtapes(dades).length];
+		for(int i = 0; i<numCiclistes(dades);i++){
+			if (getCiclistes(dades, i, 0) != null) {
+				for (int y = 0; y < getEtapes(dades).length; y++) {
+					etapes[i][y] = getTempsEtapes(dades,i,y);
+				}
+			}
+		}
+		return etapes;
+	}
 }
