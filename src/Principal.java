@@ -112,10 +112,22 @@ public class Principal {
 								}
 								break;
 							case 3:
+								if(acces.numCiclistes(dades) > 0) {
 									guanyadors();
+								}
+								else{
+									gui.imprimir("No hi han ciclistes inscrits\n");
+								}
 								break;
 							case 4:
-								remuneracions();
+								if(acces.numCiclistes(dades) > 0){
+									remuneracions();
+								}
+								else{
+									gui.imprimir("No hi han ciclistes inscrits\n");
+								}
+
+
 								break;
 						}
 					}
